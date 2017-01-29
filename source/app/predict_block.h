@@ -1,21 +1,20 @@
 // ===============
-// visible_block.h
+// predict_block.h
 // ===============
 
-#ifndef VISIBLE_BLOCK_H
-#define VISIBLE_BLOCK_H
+#ifndef PREDICT_BLOCK_H
+#define PREDICT_BLOCK_H
 
 #include "utils/utils.h"
 
-class VisibleBlock
+class PredictBlock
 {
 public:
 	void initialize(
 		utils::Vec2ui32 &bSize,
 		utils::Vec2ui32 &cSize,
-		utils::Vec2ui32 &vSize,
-		utils::Vec2ui32 &fSize,
-		float &lRate)
+		utils::Vec2ui32 &hSize,
+		utils::Vec2ui32 &fSize)
 	{
 		blockSize = {
 			static_cast<cl_int>(bSize.x),
@@ -25,30 +24,21 @@ public:
 			static_cast<cl_int>(cSize.x),
 			static_cast<cl_int>(cSize.y)};
 
-		visibleSize = {
-			static_cast<cl_int>(vSize.x),
-			static_cast<cl_int>(vSize.y)};
+		hiddenSize = {
+			static_cast<cl_int>(hSize.x),
+			static_cast<cl_int>(hSize.y)};
 
 		fieldSize = {
 			static_cast<cl_int>(fSize.x),
 			static_cast<cl_int>(fSize.y)};
-
-		weightSize = {
-			static_cast<cl_int>(blockSize.x),
-			static_cast<cl_int>(blockSize.y),
-			static_cast<cl_int>(fieldSize.x * fieldSize.y)};
-
-		initWeightRange = {
-			static_cast<cl_float>(0.00f),
-			static_cast<cl_float>(0.01f)};
 
 		numChunks = {
 			blockSize.x / chunkSize.x,
 			blockSize.y / chunkSize.y};
 
 		fieldOffset = {
-			visibleSize.x / numChunks.x,
-			visibleSize.y / numChunks.y};
+			hiddenSize.x / numChunks.x,
+			hiddenSize.y / numChunks.y};
 
 		fieldStart = {
 			static_cast<cl_int>(-fieldSize.x / 2),
@@ -72,22 +62,15 @@ public:
 		clChunkRegion[1] = numChunks.y;
 		clChunkRegion[2] = 1;
 
-		clVisibleRegion[0] = visibleSize.x;
-		clVisibleRegion[1] = visibleSize.y;
-		clVisibleRegion[2] = 1;
-
-		clWeightRegion[0] = weightSize.x;
-		clWeightRegion[1] = weightSize.y;
-		clWeightRegion[2] = weightSize.z;
-
-		learningRate = lRate;
+		clHiddenRegion[0] = hiddenSize.x;
+		clHiddenRegion[1] = hiddenSize.y;
+		clHiddenRegion[2] = 1;
 	}
 
 	cl_int2 blockSize;
 	cl_int2 chunkSize;
-	cl_int2 visibleSize;
+	cl_int2 hiddenSize;
 	cl_int2 fieldSize;
-	cl_int3 weightSize;
 
 	cl_int2 numChunks;
 	cl_int2 fieldOffset;
@@ -96,16 +79,12 @@ public:
 
 	cl_float2 initWeightRange;
 
-	cl::Image2D inputs;
-	cl::Image2D sums;
-	cl::Image2D outputs;
-	cl::Image3D weights;
-	cl::Image2D chunkWinnersOldest;
+	cl::Image2D votes;
+	cl::Image2D predicts;
 
 	cl::size_t<3> clBlockRegion;
 	cl::size_t<3> clChunkRegion;
-	cl::size_t<3> clVisibleRegion;
-	cl::size_t<3> clWeightRegion;
+	cl::size_t<3> clHiddenRegion;
 
 	float learningRate;
 };

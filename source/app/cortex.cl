@@ -53,7 +53,7 @@ kernel void setSumsFromValues(
 
 	int2 chunkPosition = sumPosition / chunkSize;
 
-	int2 chunkCenter = chunkPosition * chunkSize + chunkSize / 2;
+//	int2 chunkCenter = chunkPosition * chunkSize + chunkSize / 2;
 
 	int2 fieldCenter = chunkPosition * fieldOffset + fieldOffset / 2; 
 
@@ -115,6 +115,64 @@ kernel void setWinnersFromSums(
 	}
 
 	write_imagef(chunkWinners, chunkPosition, (float4)((float)minIndex.x, (float)minIndex.y, 0.0f, 0.0f));
+}
+
+kernel void setSumsFromWinners(
+	read_only image2d_t chunkWinners,
+	read_only image3d_t weights,
+	write_only image2d_t sums,
+	int2 chunkSize,
+	int2 valueSize,
+	int2 fieldSize,
+	int2 fieldStart,
+	int2 fieldStop,
+	int2 fieldOffset)
+{
+	int2 sumPosition = (int2)(get_global_id(0), get_global_id(1));
+
+	int2 chunkPosition = sumPosition / chunkSize;
+
+//	int2 chunkCenter = chunkPosition * chunkSize + chunkSize / 2;
+
+	int2 fieldCenter = chunkPosition * fieldOffset + fieldOffset / 2; 
+
+	int2 chunkWinner;
+	chunkWinner.x = read_imagef(chunkWinners, sampler, chunkPosition).x;
+	chunkWinner.y = read_imagef(chunkWinners, sampler, chunkPosition).y;
+
+	float sum = 0.0f;
+
+	for (int dy = fieldStart.y; dy <= fieldStop.y; dy++)
+	{
+		for (int dx = fieldStart.x; dx <= fieldStop.x; dx++)
+		{
+			int2 valuePosition = fieldCenter + (int2)(dx, dy);
+
+			if (inBounds(valuePosition, (int2)(0, 0), valueSize))
+			{
+				int3 weightPosition = (int3)(
+					sumPosition.x,
+					sumPosition.y,
+					(dx - fieldStart.x) + fieldSize.x * (dy - fieldStart.y));
+
+				float value = (valuePosition.x == chunkWinner.x && valuePosition.y == chunkWinner.y) ? 1.0f : 0.0f;
+
+				float weight = read_imagef(weights, sampler, (int4)(weightPosition, 0)).x;
+
+				float delta = value - weight;
+
+				sum += delta * delta;
+			}
+		}
+	}
+
+	write_imagef(sums, sumPosition, (float4)(sum, 0.0f, 0.0f, 0.0f));
+}
+
+kernel void setVotesFromSum(
+)
+{
+
 }
 
 kernel void setValuesFromPredicts(

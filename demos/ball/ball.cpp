@@ -58,6 +58,12 @@ int main()
 		utils::Vec2ui32(  8,   8), // fieldSize
 		0.05f);                    // learningRate
 
+	cortex.addPredictBlock(
+		utils::Vec2ui32(128, 128),  // blockSize
+		utils::Vec2ui32(  8,   8),  // chunkSize
+		utils::Vec2ui32(128, 128),  // hiddenSize
+		utils::Vec2ui32(  8,   8)); // fieldSize
+
 	cortex.initialize(cs, cp);
 
 	std::vector<float> ballSceneData = ballScene.getPixelR();

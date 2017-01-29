@@ -1,19 +1,19 @@
-// ===============
-// visible_block.h
-// ===============
+// ==============
+// memory_block.h
+// ==============
 
-#ifndef VISIBLE_BLOCK_H
-#define VISIBLE_BLOCK_H
+#ifndef MEMORY_BLOCK_H
+#define MEMORY_BLOCK_H
 
 #include "utils/utils.h"
 
-class VisibleBlock
+class MemoryBlock
 {
 public:
 	void initialize(
 		utils::Vec2ui32 &bSize,
 		utils::Vec2ui32 &cSize,
-		utils::Vec2ui32 &vSize,
+		utils::Vec2ui32 &hSize,
 		utils::Vec2ui32 &fSize,
 		float &lRate)
 	{
@@ -25,9 +25,9 @@ public:
 			static_cast<cl_int>(cSize.x),
 			static_cast<cl_int>(cSize.y)};
 
-		visibleSize = {
-			static_cast<cl_int>(vSize.x),
-			static_cast<cl_int>(vSize.y)};
+		hiddenSize = {
+			static_cast<cl_int>(hSize.x),
+			static_cast<cl_int>(hSize.y)};
 
 		fieldSize = {
 			static_cast<cl_int>(fSize.x),
@@ -47,8 +47,8 @@ public:
 			blockSize.y / chunkSize.y};
 
 		fieldOffset = {
-			visibleSize.x / numChunks.x,
-			visibleSize.y / numChunks.y};
+			hiddenSize.x / numChunks.x,
+			hiddenSize.y / numChunks.y};
 
 		fieldStart = {
 			static_cast<cl_int>(-fieldSize.x / 2),
@@ -72,9 +72,9 @@ public:
 		clChunkRegion[1] = numChunks.y;
 		clChunkRegion[2] = 1;
 
-		clVisibleRegion[0] = visibleSize.x;
-		clVisibleRegion[1] = visibleSize.y;
-		clVisibleRegion[2] = 1;
+		clHiddenRegion[0] = hiddenSize.x;
+		clHiddenRegion[1] = hiddenSize.y;
+		clHiddenRegion[2] = 1;
 
 		clWeightRegion[0] = weightSize.x;
 		clWeightRegion[1] = weightSize.y;
@@ -85,7 +85,7 @@ public:
 
 	cl_int2 blockSize;
 	cl_int2 chunkSize;
-	cl_int2 visibleSize;
+	cl_int2 hiddenSize;
 	cl_int2 fieldSize;
 	cl_int3 weightSize;
 
@@ -96,15 +96,13 @@ public:
 
 	cl_float2 initWeightRange;
 
-	cl::Image2D inputs;
+	cl::Image2D chunkWinners;
 	cl::Image2D sums;
-	cl::Image2D outputs;
 	cl::Image3D weights;
-	cl::Image2D chunkWinnersOldest;
 
 	cl::size_t<3> clBlockRegion;
 	cl::size_t<3> clChunkRegion;
-	cl::size_t<3> clVisibleRegion;
+	cl::size_t<3> clHiddenRegion;
 	cl::size_t<3> clWeightRegion;
 
 	float learningRate;

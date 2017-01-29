@@ -12,6 +12,7 @@
 
 #include "visible_block.h"
 #include "memory_block.h"
+#include "predict_block.h"
 
 #include <vector>
 #include <random>
@@ -42,7 +43,14 @@ public:
 		_memoryBlock.initialize(blockSize, chunkSize, hiddenSize, fieldSize, learningRate);
 	}
 
-//	void addPredictBlock();
+	void addPredictBlock(
+		utils::Vec2ui32 blockSize,
+		utils::Vec2ui32 chunkSize,
+		utils::Vec2ui32 hiddenSize,
+		utils::Vec2ui32 fieldSize)
+	{
+		_predictBlock.initialize(blockSize, chunkSize, hiddenSize, fieldSize);
+	}
 
 	void initialize(ComputeSystem &cs, ComputeProgram &cp);
 
@@ -65,19 +73,27 @@ private:
 
 	MemoryBlock _memoryBlock;
 
-//	std::vector<MemoryRegion> memoryRegions;
-
-//	PredictBlock _predictRegions;
+	PredictBlock _predictBlock;
 
 	cl::Kernel _initWeightsKernel;
+	cl::Kernel _setValuesFromWinnersKernel;
+
+	// Encode
 	cl::Kernel _setSumsFromValuesKernel;
 	cl::Kernel _setWinnersFromSumsKernel;
 
+	// Predict
+	cl::Kernel _setSumsFromWinnersKernel;
+	cl::Kernel _setVotesFromSumKernel;
+	cl::Kernel _setPredictsFromVotes;
+
+	// Decode
 	cl::Kernel _setValuesFromPredictsKernel;
 
+	// Learn
 	cl::Kernel _learnWeightsFromPreviousValuesKernel;
 
-	cl::Kernel _setValuesFromWinnersKernel;
+	// Swap
 
 	void initWeights(ComputeSystem &cs, cl::Image3D weights, cl_int3 weightSize, cl_float2 weightRange);
 };

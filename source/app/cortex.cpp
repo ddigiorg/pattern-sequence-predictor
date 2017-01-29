@@ -16,15 +16,16 @@ Cortex::Cortex(std::mt19937 rng)
 void Cortex::initialize(ComputeSystem &cs, ComputeProgram &cp)
 {
 	// Initialize kernels
-	_initWeightsKernel        = cl::Kernel(cp.getProgram(), "initWeights");
-	_setSumsFromValuesKernel  = cl::Kernel(cp.getProgram(), "setSumsFromValues");
+	_initWeightsKernel = cl::Kernel(cp.getProgram(), "initWeights");
+	_setValuesFromWinnersKernel = cl::Kernel(cp.getProgram(), "setValuesFromWinners");
+	_setSumsFromValuesKernel = cl::Kernel(cp.getProgram(), "setSumsFromValues");
 	_setWinnersFromSumsKernel = cl::Kernel(cp.getProgram(), "setWinnersFromSums");
 
+	_setSumsFromWinnersKernel = cl::Kernel(cp.getProgram(), "setSumsFromWinners");
+	_setVotesFromSumKernel = cl::Kernel(cp.getProgram(), "setVotesFromSum");
+
 	_setValuesFromPredictsKernel = cl::Kernel(cp.getProgram(), "setValuesFromPredicts");
-
 	_learnWeightsFromPreviousValuesKernel = cl::Kernel(cp.getProgram(), "learnWeightsFromPreviousValues");
-
-	_setValuesFromWinnersKernel = cl::Kernel(cp.getProgram(), "setValuesFromWinners");
 
 	// Define images
 	_visibleBlock.inputs  = utils::createImage2D(cs, _visibleBlock.visibleSize, CL_R, CL_FLOAT);
@@ -32,24 +33,25 @@ void Cortex::initialize(ComputeSystem &cs, ComputeProgram &cp)
 	_visibleBlock.sums    = utils::createImage2D(cs, _visibleBlock.blockSize,   CL_R, CL_FLOAT);
 	_visibleBlock.weights = utils::createImage3D(cs, _visibleBlock.weightSize,  CL_R, CL_FLOAT);
 
-	_visibleBlock.chunkWinnersOldest = utils::createImage2D(cs, _visibleBlock.numChunks, CL_RG, CL_FLOAT);
-
-//	_memoryBlock.chunkWinners = utils::createImage2D(cs, _memoryBlock.numChunks,  CL_RG, CL_FLOAT);
-//	_memoryBlock.sums         = utils::createImage2D(cs, _memoryBlock.blockSize,  CL_R,  CL_FLOAT);
-//	_memoryBlock.weights      = utils::createImage3D(cs, _memoryBlock.weightSize, CL_R,  CL_FLOAT);
+	_memoryBlock.chunkWinners = utils::createImage2D(cs, _memoryBlock.numChunks,  CL_RG, CL_FLOAT);
+	_memoryBlock.sums         = utils::createImage2D(cs, _memoryBlock.blockSize,  CL_R,  CL_FLOAT);
+	_memoryBlock.weights      = utils::createImage3D(cs, _memoryBlock.weightSize, CL_R,  CL_FLOAT);
 
 	// Fill images with zeros
 	cs.getQueue().enqueueFillImage(_visibleBlock.inputs,  _zeroColor, _zeroOrigin, _visibleBlock.clVisibleRegion);
 	cs.getQueue().enqueueFillImage(_visibleBlock.outputs, _zeroColor, _zeroOrigin, _visibleBlock.clVisibleRegion);
 	cs.getQueue().enqueueFillImage(_visibleBlock.sums,    _zeroColor, _zeroOrigin, _visibleBlock.clBlockRegion  );
 
-	cs.getQueue().enqueueFillImage(_visibleBlock.chunkWinnersOldest, _zeroColor, _zeroOrigin, _visibleBlock.clChunkRegion);
+	cs.getQueue().enqueueFillImage(_memoryBlock.chunkWinners, _zeroColor, _zeroOrigin, _memoryBlock.clChunkRegion );
+	cs.getQueue().enqueueFillImage(_memoryBlock.sums,         _zeroColor, _zeroOrigin, _memoryBlock.clBlockRegion );
 
 	cs.getQueue().finish();
 
-
 	// Fill 3D images with random float values
 	initWeights(cs, _visibleBlock.weights, _visibleBlock.weightSize, _visibleBlock.initWeightRange);
+
+	initWeights(cs, _memoryBlock.weights, _memoryBlock.weightSize, _memoryBlock.initWeightRange);
+
 }
 
 void Cortex::step(ComputeSystem& cs, bool learn)
@@ -72,7 +74,7 @@ void Cortex::step(ComputeSystem& cs, bool learn)
 	cs.getQueue().finish();
 
 	_setWinnersFromSumsKernel.setArg(0, _visibleBlock.sums);
-	_setWinnersFromSumsKernel.setArg(1, _visibleBlock.chunkWinnersOldest);
+	_setWinnersFromSumsKernel.setArg(1, _memoryBlock.chunkWinners);
 	_setWinnersFromSumsKernel.setArg(2, _visibleBlock.chunkSize);
 
 	range = cl::NDRange(_visibleBlock.numChunks.x, _visibleBlock.numChunks.y);
@@ -80,9 +82,24 @@ void Cortex::step(ComputeSystem& cs, bool learn)
 	cs.getQueue().finish();
 
 	// Predict
+	_setSumsFromWinnersKernel.setArg(0, _memoryBlock.chunkWinners);
+	_setSumsFromWinnersKernel.setArg(1, _memoryBlock.weights);
+	_setSumsFromWinnersKernel.setArg(2, _memoryBlock.sums);
+	_setSumsFromWinnersKernel.setArg(3, _memoryBlock.chunkSize);
+	_setSumsFromWinnersKernel.setArg(4, _memoryBlock.hiddenSize);
+	_setSumsFromWinnersKernel.setArg(5, _memoryBlock.fieldSize);
+	_setSumsFromWinnersKernel.setArg(6, _memoryBlock.fieldStart);
+	_setSumsFromWinnersKernel.setArg(7, _memoryBlock.fieldStop);
+	_setSumsFromWinnersKernel.setArg(8, _memoryBlock.fieldOffset);
+
+	range = cl::NDRange(_memoryBlock.blockSize.x, _memoryBlock.blockSize.y);
+	cs.getQueue().enqueueNDRangeKernel(_setSumsFromWinnersKernel, cl::NullRange, range);
+	cs.getQueue().finish();
+
+	// !!!!!!!!!!!!!!!!!!!STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!
 
 	// Decode
-	_setValuesFromPredictsKernel.setArg(0, _visibleBlock.chunkWinnersOldest);
+	_setValuesFromPredictsKernel.setArg(0, _memoryBlock.chunkWinners);
 	_setValuesFromPredictsKernel.setArg(1, _visibleBlock.weights);
 	_setValuesFromPredictsKernel.setArg(2, _visibleBlock.outputs);
 	_setValuesFromPredictsKernel.setArg(3, _visibleBlock.chunkSize);
@@ -100,7 +117,7 @@ void Cortex::step(ComputeSystem& cs, bool learn)
 	if (learn)
 	{
 		_learnWeightsFromPreviousValuesKernel.setArg( 0, _visibleBlock.inputs);
-		_learnWeightsFromPreviousValuesKernel.setArg( 1, _visibleBlock.chunkWinnersOldest);
+		_learnWeightsFromPreviousValuesKernel.setArg( 1, _memoryBlock.chunkWinners);
 		_learnWeightsFromPreviousValuesKernel.setArg( 2, _visibleBlock.weights);
 		_learnWeightsFromPreviousValuesKernel.setArg( 3, _visibleBlock.weights);
 		_learnWeightsFromPreviousValuesKernel.setArg( 4, _visibleBlock.chunkSize);
@@ -151,20 +168,20 @@ std::vector<float> Cortex::getVisibleOutputs(ComputeSystem &cs)
 
 std::vector<float> Cortex::getChunkSDR(ComputeSystem &cs, unsigned int memoryIndex)
 {
-	cl::Image2D sdr = utils::createImage2D(cs, _visibleBlock.blockSize, CL_R, CL_FLOAT);
+	cl::Image2D sdr = utils::createImage2D(cs, _memoryBlock.blockSize, CL_R, CL_FLOAT);
 
-	_setValuesFromWinnersKernel.setArg(0, _visibleBlock.chunkWinnersOldest);
+	_setValuesFromWinnersKernel.setArg(0, _memoryBlock.chunkWinners);
 	_setValuesFromWinnersKernel.setArg(1, sdr);
-	_setValuesFromWinnersKernel.setArg(2, _visibleBlock.chunkSize);
+	_setValuesFromWinnersKernel.setArg(2, _memoryBlock.chunkSize);
 
-	cl::NDRange range = cl::NDRange(_visibleBlock.numChunks.x, _visibleBlock.numChunks.y);
+	cl::NDRange range = cl::NDRange(_memoryBlock.numChunks.x, _memoryBlock.numChunks.y);
 	cs.getQueue().enqueueNDRangeKernel(_setValuesFromWinnersKernel, cl::NullRange, range);
 	cs.getQueue().finish();
 
-	std::vector<float> dataVector(_visibleBlock.blockSize.x * _visibleBlock.blockSize.y);
+	std::vector<float> dataVector(_memoryBlock.blockSize.x * _memoryBlock.blockSize.y);
 
 	cs.getQueue().enqueueReadImage(
-		sdr, CL_TRUE, _zeroOrigin, _visibleBlock.clBlockRegion, 0, 0, dataVector.data());
+		sdr, CL_TRUE, _zeroOrigin, _memoryBlock.clBlockRegion, 0, 0, dataVector.data());
 	cs.getQueue().finish();
 
 	return dataVector;
