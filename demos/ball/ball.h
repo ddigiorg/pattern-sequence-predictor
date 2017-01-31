@@ -8,6 +8,7 @@
 #include "utils/utils.h"
 
 #include <vector>
+#include <iostream>
 
 class Ball
 {
@@ -16,31 +17,30 @@ public:
 	{
 		_spaceSize = spaceSize;
 
-		_position = utils::Vec2ui32(spaceSize.x / 2, spaceSize.y / 2);
+		_position = utils::Vec2ui32(spaceSize.x / 2, 5);
+
+//		_position = utils::Vec2ui32(spaceSize.x / 2, spaceSize.y / 2);
+
+		_initialPosition = _position;
 
 		_velocity = utils::Vec2f(0.0f, 0.0f);
 
 		_radius = 2;
 
 		_pixelR.resize(_spaceSize.x * _spaceSize.y);
-
-		update();
 	}
  
-	void update()
+	void reset()
 	{
-//		_velocity.x += 0.0f;
-//		_velocity.y += _acceleration;
+		_position.x = _initialPosition.x;
+		_position.y = _initialPosition.y;
 
-//		_position.x += _velocity.x;
-//		_position.y += _velocity.y;
+		_velocity.x = 0.0f;
+		_velocity.y = 0.0f;
+	}
 
-//		if (_position.y + _radius >= _spaceSize.y - 1)
-//		{
-//			_velocity.y = -0.99f;
-//			_position.y = _spaceSize.y - 1 - _radius;
-//		}
-
+	void step()
+	{
 		int i = 0;
 		float value;
 		float value2;
@@ -68,6 +68,29 @@ public:
 					_pixelR[i] = value;
 			}
 		}
+
+		_velocity.y += _acceleration;
+
+		_position.x += _velocity.x;
+		_position.y += _velocity.y;
+
+		bool onGround = _position.y + _radius >= _spaceSize.y - 1;
+
+		if (onGround)
+		{
+			float vSquaredX = _velocity.x * _velocity.x;
+			float vSquaredY = _velocity.y * _velocity.y;
+
+			if (vSquaredX < 1.0 && vSquaredY < 2.0)
+			{
+				reset();
+			}
+			else
+			{
+				_velocity.y *= -0.75f;
+				_position.y = _spaceSize.y - 1 - _radius;
+			}
+		}
 	}
 
 	std::vector<float> getPixelR()
@@ -80,8 +103,9 @@ private:
 
 	utils::Vec2ui32 _spaceSize;
 	utils::Vec2ui32 _position;
+	utils::Vec2ui32 _initialPosition;
 	utils::Vec2f _velocity;
-	float _acceleration = 0.5f;
+	float _acceleration = 1.0f;
 
 	int _radius;
 };

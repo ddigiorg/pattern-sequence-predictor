@@ -40,7 +40,7 @@ public:
 
 		initWeightRange = {
 			static_cast<cl_float>(0.00f),
-			static_cast<cl_float>(0.01f)};
+			static_cast<cl_float>(1.00f)};
 
 		numChunks = {
 			blockSize.x / chunkSize.x,
@@ -100,7 +100,6 @@ public:
 	cl::Image2D sums;
 	cl::Image2D outputs;
 	cl::Image3D weights;
-	cl::Image2D chunkWinnersOldest;
 
 	cl::size_t<3> clBlockRegion;
 	cl::size_t<3> clChunkRegion;

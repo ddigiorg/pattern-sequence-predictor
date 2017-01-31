@@ -33,23 +33,29 @@ public:
 		_visibleBlock.initialize(blockSize, chunkSize, visibleSize, fieldSize, learningRate);
 	}
 
-	void addMemoryBlock(
+	void addMemoryBlocks(
+		unsigned int numBlocks,
 		utils::Vec2ui32 blockSize,
 		utils::Vec2ui32 chunkSize,
-		utils::Vec2ui32 hiddenSize,
-		utils::Vec2ui32 fieldSize,
 		float learningRate)
 	{
-		_memoryBlock.initialize(blockSize, chunkSize, hiddenSize, fieldSize, learningRate);
+//		MemoryBlock *mB = new MemoryBlock;
+//		mB->initialize(blockSize, chunkSize, learningRate);
+//		_memoryBlocks.push_back(*mB);
+
+		_memoryBlocks.resize(numBlocks + 1);
+
+		for (int mb = 0; mb < _memoryBlocks.size(); mb++)
+		{
+			_memoryBlocks[mb].initialize(blockSize, chunkSize, learningRate); 
+		}
 	}
 
 	void addPredictBlock(
 		utils::Vec2ui32 blockSize,
-		utils::Vec2ui32 chunkSize,
-		utils::Vec2ui32 hiddenSize,
-		utils::Vec2ui32 fieldSize)
+		utils::Vec2ui32 chunkSize)
 	{
-		_predictBlock.initialize(blockSize, chunkSize, hiddenSize, fieldSize);
+		_predictBlock.initialize(blockSize, chunkSize);
 	}
 
 	void initialize(ComputeSystem &cs, ComputeProgram &cp);
@@ -60,7 +66,10 @@ public:
 
 	std::vector<float> getVisibleInputs(ComputeSystem &cs);
 	std::vector<float> getVisibleOutputs(ComputeSystem &cs);
-	std::vector<float> getChunkSDR(ComputeSystem &cs, unsigned int memoryIndex);
+	std::vector<float> getChunkWinnersOldest(ComputeSystem &cs);
+	std::vector<float> getChunkWinners(ComputeSystem &cs, unsigned int memoryIndex);
+	std::vector<float> getChunkPredicts(ComputeSystem &cs);
+
 
 private:
 	std::mt19937 _rng;
@@ -71,7 +80,7 @@ private:
 
 	VisibleBlock _visibleBlock;
 
-	MemoryBlock _memoryBlock;
+	std::vector<MemoryBlock> _memoryBlocks;
 
 	PredictBlock _predictBlock;
 
@@ -79,19 +88,20 @@ private:
 	cl::Kernel _setValuesFromWinnersKernel;
 
 	// Encode
-	cl::Kernel _setSumsFromValuesKernel;
+	cl::Kernel _setSumsFromVisiblesKernel;
 	cl::Kernel _setWinnersFromSumsKernel;
 
 	// Predict
 	cl::Kernel _setSumsFromWinnersKernel;
-	cl::Kernel _setVotesFromSumKernel;
-	cl::Kernel _setPredictsFromVotes;
+	cl::Kernel _setVotesFromSumsKernel;
+	cl::Kernel _setPredictsFromVotesKernel;
 
 	// Decode
-	cl::Kernel _setValuesFromPredictsKernel;
+	cl::Kernel _setVisiblesFromPredictsKernel;
 
 	// Learn
-	cl::Kernel _learnWeightsFromPreviousValuesKernel;
+	cl::Kernel _learnWeightsFromPreviousVisiblesKernel;
+	cl::Kernel _learnWeightsFromPreviousWinnersKernel;
 
 	// Swap
 

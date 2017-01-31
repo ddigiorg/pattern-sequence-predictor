@@ -11,21 +11,43 @@
 class Render2D
 {
 public:
-	void setPixelsR(std::vector<float> imageData, utils::Vec2ui32 imageSize)
+	Render2D(utils::Vec2ui32 imageSize)
 	{
-		_image.create(imageSize.x, imageSize.y);
+		_imageSize = imageSize;
+		_image.create(_imageSize.x, _imageSize.y);
+	}
 
-		for (int y = 0; y < imageSize.y; y++)
+	void setPixelsR(std::vector<float> imageData)
+	{
+		for (int y = 0; y < _imageSize.y; y++)
 		{
-			for (int x = 0; x < imageSize.x; x++)
+			for (int x = 0; x < _imageSize.x; x++)
 			{
-				sf::Color color;
+ 				unsigned int i = x + _imageSize.x * y;
 
- 				unsigned int i = x + imageSize.x * y;
+				_color.r = 255.0f * imageData[i];
 
-				color.r = 255.0f * imageData[i];
+				_image.setPixel(x, y, _color);
+			}
+		}
 
-				_image.setPixel(x, y, color);
+		_texture.loadFromImage(_image);
+		_sprite.setTexture(_texture);
+		_sprite.setOrigin(sf::Vector2f(_texture.getSize().x * 0.5f, _texture.getSize().y * 0.5f));
+	}
+
+	void setPixelsRB(std::vector<float> imageDataR, std::vector<float> imageDataB)
+	{
+		for (int y = 0; y < _imageSize.y; y++)
+		{
+			for (int x = 0; x < _imageSize.x; x++)
+			{
+ 				unsigned int i = x + _imageSize.x * y;
+
+				_color.r = 255.0f * imageDataR[i];
+				_color.b = 255.0f * imageDataB[i];
+
+				_image.setPixel(x, y, _color);
 			}
 		}
 
@@ -50,6 +72,9 @@ public:
 	}
 
 private:
+	utils::Vec2ui32 _imageSize;
+
+	sf::Color _color;
 	sf::Image _image;
 	sf::Texture _texture;
 	sf::Sprite _sprite;

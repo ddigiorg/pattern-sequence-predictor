@@ -44,13 +44,7 @@ void Cortex::initialize(ComputeSystem &cs, ComputeProgram &cp)
 	initWeights(cs, _visibleBlock.weights, _visibleBlock.weightSize, _visibleBlock.initWeightRange);
 
 	// Initialize _memoryBlocks
-	int mb = _memoryBlocks.size() - 1;
-
-	_memoryBlocks[mb].chunkWinners = utils::createImage2D(cs, _memoryBlocks[mb].numChunks,  CL_RG, CL_FLOAT);
-
-	cs.getQueue().enqueueFillImage(_memoryBlocks[mb].chunkWinners, _zeroColor, _zeroOrigin, _memoryBlocks[mb].clChunkRegion );
-
-	for (int mb = _memoryBlocks.size() - 2; mb >= 0; mb--)
+	for (int mb = 0; mb < _memoryBlocks.size() - 1; mb++)
 	{
 		_memoryBlocks[mb].chunkWinners = utils::createImage2D(cs, _memoryBlocks[mb].numChunks,  CL_RG, CL_FLOAT);
 		_memoryBlocks[mb].sums         = utils::createImage2D(cs, _memoryBlocks[mb].blockSize,  CL_R,  CL_FLOAT);
@@ -61,6 +55,12 @@ void Cortex::initialize(ComputeSystem &cs, ComputeProgram &cp)
 
 		initWeights(cs, _memoryBlocks[mb].weights, _memoryBlocks[mb].weightSize, _memoryBlocks[mb].initWeightRange);
 	}
+
+	int mb = _memoryBlocks.size();
+
+	_memoryBlocks[mb].chunkWinners = utils::createImage2D(cs, _memoryBlocks[mb].numChunks,  CL_RG, CL_FLOAT);
+
+	cs.getQueue().enqueueFillImage(_memoryBlocks[mb].chunkWinners, _zeroColor, _zeroOrigin, _memoryBlocks[mb].clChunkRegion );
 
 	// Initialize _predictBlock
 	_predictBlock.votes         = utils::createImage2D(cs, _predictBlock.blockSize, CL_R,  CL_FLOAT);
@@ -77,10 +77,10 @@ void Cortex::step(ComputeSystem& cs, bool learn)
 	cl::NDRange range;
 
 	// Swap
-	for (int mb = _memoryBlocks.size() - 2; mb >= 0; mb--)
+	for (mb = _memoryBlocks.size() - 1; mb > 0; mb--)
 	{
 		cs.getQueue().enqueueCopyImage(
-			_memoryBlocks[mb].chunkWinners, _memoryBlocks[mb + 1].chunkWinners,
+			_memoryBlocks[mb - 1].chunkWinners, _memoryBlocks[mb].chunkWinners,
 			_zeroOrigin, _zeroOrigin, _memoryBlocks[mb].clChunkRegion);
 	}
 
@@ -119,7 +119,7 @@ void Cortex::step(ComputeSystem& cs, bool learn)
 	cs.getQueue().finish();
 	*/
 
-	for (int mb = _memoryBlocks.size() - 2; mb >= 0; mb--)
+	for (int mb = 0; mb < _memoryBlocks.size(); mb++)
 	{
 		_setSumsFromWinnersKernel.setArg(0, _memoryBlocks[mb].chunkWinners);
 		_setSumsFromWinnersKernel.setArg(1, _memoryBlocks[mb].weights);
@@ -178,9 +178,9 @@ void Cortex::step(ComputeSystem& cs, bool learn)
 		cs.getQueue().enqueueNDRangeKernel(_learnWeightsFromPreviousVisiblesKernel, cl::NullRange, range);
 		cs.getQueue().finish();
 
-		for (int mb = _memoryBlocks.size() - 2; mb >= 0; mb--)
+		for (int mb = 0; mb < _memoryBlocks.size(); mb++)
 		{
-			_learnWeightsFromPreviousWinnersKernel.setArg(0, _memoryBlocks[mb + 1].chunkWinners);
+			_learnWeightsFromPreviousWinnersKernel.setArg(0, _chunkWinnersOldest);
 			_learnWeightsFromPreviousWinnersKernel.setArg(1, _memoryBlocks[mb].chunkWinners);  //memory block 0
 			_learnWeightsFromPreviousWinnersKernel.setArg(2, _memoryBlocks[mb].weights);
 			_learnWeightsFromPreviousWinnersKernel.setArg(3, _memoryBlocks[mb].weights);
@@ -228,11 +228,9 @@ std::vector<float> Cortex::getChunkWinnersOldest(ComputeSystem &cs)
 {
 	cl::Image2D sdr = utils::createImage2D(cs, _memoryBlocks[0].blockSize, CL_R, CL_FLOAT);
 
-	int mb = _memoryBlocks.size() - 1;
-
-	_setValuesFromWinnersKernel.setArg(0, _memoryBlocks[mb].chunkWinners);
+	_setValuesFromWinnersKernel.setArg(0, _chunkWinnersOldest);
 	_setValuesFromWinnersKernel.setArg(1, sdr);
-	_setValuesFromWinnersKernel.setArg(2, _memoryBlocks[mb].chunkSize);
+	_setValuesFromWinnersKernel.setArg(2, _memoryBlocks[0].chunkSize);
 
 	cl::NDRange range = cl::NDRange(_memoryBlocks[0].numChunks.x, _memoryBlocks[0].numChunks.y);
 	cs.getQueue().enqueueNDRangeKernel(_setValuesFromWinnersKernel, cl::NullRange, range);
