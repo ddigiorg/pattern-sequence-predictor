@@ -165,6 +165,15 @@ kernel void setVotesFromSums(
 	write_only image2d_t votes,
 	int2 chunkSize)
 {
+	int2 blockPosition = (int2)(get_global_id(0), get_global_id(1));
+
+	float votePrev = read_imagef(votesPrev, sampler, blockPosition).x;
+
+	float sum = read_imagef(sums, sampler, blockPosition).x;
+
+	write_imagef(votes, blockPosition, (float4)(votePrev + sum, 0.0f, 0.0f, 0.0f));
+
+	/*
 	int2 chunkNumber = (int2)(get_global_id(0), get_global_id(1));
 
 	float minValue = 99999.0f;
@@ -193,6 +202,7 @@ kernel void setVotesFromSums(
 	float vote = votePrev + 1.0f;
 
 	write_imagef(votes, votePosition, (float4)(vote, 0.0f, 0.0f, 0.0f));
+	*/
 }
 
 kernel void setPredictsFromVotes(

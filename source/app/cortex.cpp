@@ -109,16 +109,6 @@ void Cortex::step(ComputeSystem& cs, bool learn)
 	cs.getQueue().finish();
 
 	// Predict
-	/*
-	_setWinnersFromSumsKernel.setArg(0, _memoryBlocks[0].sums);
-	_setWinnersFromSumsKernel.setArg(1, _predictBlock.chunkPredicts);
-	_setWinnersFromSumsKernel.setArg(2, _predictBlock.chunkSize);
-
-	range = cl::NDRange(_predictBlock.numChunks.x, _predictBlock.numChunks.y);
-	cs.getQueue().enqueueNDRangeKernel(_setWinnersFromSumsKernel, cl::NullRange, range);
-	cs.getQueue().finish();
-	*/
-
 	for (int mb = _memoryBlocks.size() - 2; mb >= 0; mb--)
 	{
 		_setSumsFromWinnersKernel.setArg(0, _memoryBlocks[mb].chunkWinners);
@@ -135,17 +125,28 @@ void Cortex::step(ComputeSystem& cs, bool learn)
 		_setVotesFromSumsKernel.setArg(2, _predictBlock.votes);
 		_setVotesFromSumsKernel.setArg(3, _predictBlock.chunkSize);
 
-		range = cl::NDRange(_predictBlock.numChunks.x, _predictBlock.numChunks.y);
+//		range = cl::NDRange(_predictBlock.numChunks.x, _predictBlock.numChunks.y);
+		range = cl::NDRange(_predictBlock.blockSize.x, _predictBlock.blockSize.y);
 		cs.getQueue().enqueueNDRangeKernel(_setVotesFromSumsKernel, cl::NullRange, range);
 		cs.getQueue().finish();
 	}
 
+	/*
 	_setPredictsFromVotesKernel.setArg(0, _predictBlock.votes);
 	_setPredictsFromVotesKernel.setArg(1, _predictBlock.chunkPredicts);
 	_setPredictsFromVotesKernel.setArg(2, _predictBlock.chunkSize);
 
 	range = cl::NDRange(_predictBlock.numChunks.x, _predictBlock.numChunks.y);
 	cs.getQueue().enqueueNDRangeKernel(_setPredictsFromVotesKernel, cl::NullRange, range);
+	cs.getQueue().finish();
+	*/
+
+	_setWinnersFromSumsKernel.setArg(0, _predictBlock.votes);
+	_setWinnersFromSumsKernel.setArg(1, _predictBlock.chunkPredicts);
+	_setWinnersFromSumsKernel.setArg(2, _predictBlock.chunkSize);
+
+	range = cl::NDRange(_predictBlock.numChunks.x, _predictBlock.numChunks.y);
+	cs.getQueue().enqueueNDRangeKernel(_setWinnersFromSumsKernel, cl::NullRange, range);
 	cs.getQueue().finish();
 
 	// Decode

@@ -52,7 +52,7 @@ int main()
 		0.25f);                    // learningRate
 
 	cortex.addMemoryBlocks(
-		1,                         // numBlocks
+		3,                         // numBlocks
 		utils::Vec2ui32(128, 128), // blockSize
 		utils::Vec2ui32(  8,   8), // chunkSize
 		0.25f);                    // learningRate
