@@ -181,7 +181,7 @@ void Cortex::step(ComputeSystem& cs, bool learn)
 		for (int mb = _memoryBlocks.size() - 2; mb >= 0; mb--)
 		{
 			_learnWeightsFromPreviousWinnersKernel.setArg(0, _memoryBlocks[mb + 1].chunkWinners);
-			_learnWeightsFromPreviousWinnersKernel.setArg(1, _memoryBlocks[mb].chunkWinners);  //memory block 0
+			_learnWeightsFromPreviousWinnersKernel.setArg(1, _memoryBlocks[0].chunkWinners);  //memory block 0
 			_learnWeightsFromPreviousWinnersKernel.setArg(2, _memoryBlocks[mb].weights);
 			_learnWeightsFromPreviousWinnersKernel.setArg(3, _memoryBlocks[mb].weights);
 			_learnWeightsFromPreviousWinnersKernel.setArg(4, _memoryBlocks[mb].chunkSize);
