@@ -13,19 +13,19 @@
 class Ball
 {
 public:
-	Ball(utils::Vec2ui32 spaceSize)
+	Ball(utils::Vec2i spaceSize)
 	{
 		_spaceSize = spaceSize;
 
-		_position = utils::Vec2ui32(spaceSize.x / 2, 5);
+		_position = utils::Vec2i(5, 5);
 
-//		_position = utils::Vec2ui32(spaceSize.x / 2, spaceSize.y / 2);
+//		_position = utils::Vec2i(spaceSize.x / 2, spaceSize.y / 2);
 
 		_initialPosition = _position;
 
 		_velocity = utils::Vec2f(0.0f, 0.0f);
 
-		_radius = 2;
+		_radius = 1;
 
 		_pixelR.resize(_spaceSize.x * _spaceSize.y);
 	}
@@ -69,6 +69,22 @@ public:
 			}
 		}
 
+		/*
+		_position.y += 3.0f;
+
+		if (_position.y >= 45.0f)
+			reset();
+		*/
+
+		if (_position.y <= 5.0f)
+			_velocity.y = 3.0f * _acceleration;
+		
+		if (_position.y >= 42.0f)
+			_velocity.y = 3.0f * -_acceleration;
+
+		_position.y += _velocity.y;
+
+		/*
 		_velocity.y += _acceleration;
 
 		_position.x += _velocity.x;
@@ -91,6 +107,8 @@ public:
 				_position.y = _spaceSize.y - 1 - _radius;
 			}
 		}
+		*/
+		
 	}
 
 	std::vector<float> getPixelR()
@@ -101,9 +119,9 @@ public:
 private:
 	std::vector<float> _pixelR;
 
-	utils::Vec2ui32 _spaceSize;
-	utils::Vec2ui32 _position;
-	utils::Vec2ui32 _initialPosition;
+	utils::Vec2i _spaceSize;
+	utils::Vec2i _position;
+	utils::Vec2i _initialPosition;
 	utils::Vec2f _velocity;
 	float _acceleration = 1.0f;
 

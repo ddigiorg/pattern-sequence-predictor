@@ -10,43 +10,38 @@
 class PredictBlock
 {
 public:
+
+	cl_int numColumns;
+	cl_int numNodesInColumn;
+	cl_int numNodesInField;
+
+	cl_int  winnersSize;
+	cl_int2 patternMemoriesSize;
+	cl_int2 patternSumsSize;
+
+	cl::size_t<3> clWinnersRegion;
+
+	cl::Image1D winners;
+	cl::Image2D patternMemories;
+	cl::Image2D patternSums;
+
 	void initialize(
-		utils::Vec2ui32 &bSize,
-		utils::Vec2ui32 &cSize)
+		utils::Vec3i &blockDims,
+		int numPatterns)
 	{
-		blockSize = {
-			static_cast<cl_int>(bSize.x),
-			static_cast<cl_int>(bSize.y)};
+		numColumns =
+			static_cast<cl_int>(blockDims.x * blockDims.y);
 
-		chunkSize = {
-			static_cast<cl_int>(cSize.x),
-			static_cast<cl_int>(cSize.y)};
+		winnersSize = numColumns;
 
-		numChunks = {
-			blockSize.x / chunkSize.x,
-			blockSize.y / chunkSize.y};
+		patternMemoriesSize = {
+			static_cast<cl_int>(numColumns),
+			static_cast<cl_int>(numPatterns)};
 
-		clBlockRegion[0] = blockSize.x;
-		clBlockRegion[1] = blockSize.y;
-		clBlockRegion[2] = 1;
-
-		clChunkRegion[0] = numChunks.x;
-		clChunkRegion[1] = numChunks.y;
-		clChunkRegion[2] = 1;
+		clWinnersRegion[0] = winnersSize;
+		clWinnersRegion[1] = 1;
+		clWinnersRegion[2] = 1;
 	}
-
-	cl_int2 blockSize;
-	cl_int2 chunkSize;
-
-	cl_int2 numChunks;
-
-	cl_float2 initWeightRange;
-
-	cl::Image2D votes;
-	cl::Image2D chunkPredicts;
-
-	cl::size_t<3> clBlockRegion;
-	cl::size_t<3> clChunkRegion;
 };
 
 #endif

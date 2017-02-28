@@ -10,103 +10,106 @@
 class VisibleBlock
 {
 public:
-	void initialize(
-		utils::Vec2ui32 &bSize,
-		utils::Vec2ui32 &cSize,
-		utils::Vec2ui32 &vSize,
-		utils::Vec2ui32 &fSize,
-		float &lRate)
-	{
-		blockSize = {
-			static_cast<cl_int>(bSize.x),
-			static_cast<cl_int>(bSize.y)};
+	cl_float learningRate;
 
-		chunkSize = {
-			static_cast<cl_int>(cSize.x),
-			static_cast<cl_int>(cSize.y)};
+	cl_int numColumns;
+	cl_int numNodesInColumn;
+	cl_int numNodesInField;
 
-		visibleSize = {
-			static_cast<cl_int>(vSize.x),
-			static_cast<cl_int>(vSize.y)};
-
-		fieldSize = {
-			static_cast<cl_int>(fSize.x),
-			static_cast<cl_int>(fSize.y)};
-
-		weightSize = {
-			static_cast<cl_int>(blockSize.x),
-			static_cast<cl_int>(blockSize.y),
-			static_cast<cl_int>(fieldSize.x * fieldSize.y)};
-
-		initWeightRange = {
-			static_cast<cl_float>(0.00f),
-			static_cast<cl_float>(1.00f)};
-
-		numChunks = {
-			blockSize.x / chunkSize.x,
-			blockSize.y / chunkSize.y};
-
-		fieldOffset = {
-			visibleSize.x / numChunks.x,
-			visibleSize.y / numChunks.y};
-
-		fieldStart = {
-			static_cast<cl_int>(-fieldSize.x / 2),
-			static_cast<cl_int>(-fieldSize.y / 2)};
-
-		if (fieldSize.x % 2 == 0)
-			fieldStart.x++;
-
-		if (fieldSize.y % 2 == 0)
-			fieldStart.y++;
-
-		fieldStop = {
-			static_cast<cl_int>(fieldSize.x / 2),
-			static_cast<cl_int>(fieldSize.y / 2)};
-
-		clBlockRegion[0] = blockSize.x;
-		clBlockRegion[1] = blockSize.y;
-		clBlockRegion[2] = 1;
-
-		clChunkRegion[0] = numChunks.x;
-		clChunkRegion[1] = numChunks.y;
-		clChunkRegion[2] = 1;
-
-		clVisibleRegion[0] = visibleSize.x;
-		clVisibleRegion[1] = visibleSize.y;
-		clVisibleRegion[2] = 1;
-
-		clWeightRegion[0] = weightSize.x;
-		clWeightRegion[1] = weightSize.y;
-		clWeightRegion[2] = weightSize.z;
-
-		learningRate = lRate;
-	}
-
-	cl_int2 blockSize;
-	cl_int2 chunkSize;
-	cl_int2 visibleSize;
+	cl_int3 blockSize;
 	cl_int2 fieldSize;
-	cl_int3 weightSize;
-
-	cl_int2 numChunks;
 	cl_int2 fieldOffset;
 	cl_int2 fieldStart;
 	cl_int2 fieldStop;
 
-	cl_float2 initWeightRange;
+	cl_int2 visiblesSize;
+	cl_int2 fieldCentersSize;
+	cl_int2 contrastsSize;
+	cl_int3 memoriesSize;
+
+	cl::size_t<3> clVisiblesRegion;
+	cl::size_t<3> clFieldCentersRegion;
+	cl::size_t<3> clContrastsRegion;
+	cl::size_t<3> clMemoriesRegion;
 
 	cl::Image2D inputs;
-	cl::Image2D sums;
 	cl::Image2D outputs;
-	cl::Image3D weights;
+	cl::Image2D fieldCenters;
+	cl::Image2D contrasts;
+	cl::Image3D memories;
 
-	cl::size_t<3> clBlockRegion;
-	cl::size_t<3> clChunkRegion;
-	cl::size_t<3> clVisibleRegion;
-	cl::size_t<3> clWeightRegion;
+	void initialize(
+		utils::Vec3i &blockDims,
+		utils::Vec2i &visibleDims,
+		utils::Vec2i &fieldDims,
+		float &lRate)
+	{
+		learningRate =
+			static_cast<cl_float>(lRate);
 
-	float learningRate;
+		numColumns =
+			static_cast<cl_int>(blockDims.x * blockDims.y);
+
+		numNodesInColumn =
+			static_cast<cl_int>(blockDims.z);
+
+		numNodesInField =
+			static_cast<cl_int>(fieldDims.x * fieldDims.y);
+
+		blockSize = {
+			static_cast<cl_int>(blockDims.x),
+			static_cast<cl_int>(blockDims.y),
+			static_cast<cl_int>(blockDims.z)};
+
+		fieldSize = {
+			static_cast<cl_int>(fieldDims.x),
+			static_cast<cl_int>(fieldDims.y)};
+
+		fieldOffset = {
+			static_cast<cl_int>(visibleDims.x / blockDims.x),
+			static_cast<cl_int>(visibleDims.y / blockDims.y)};
+
+		fieldStart = {
+			static_cast<cl_int>(-fieldDims.x / 2 - fieldDims.x % 2 + 1),
+			static_cast<cl_int>(-fieldDims.y / 2 - fieldDims.y % 2 + 1)};
+
+		fieldStop = {
+			static_cast<cl_int>(fieldDims.x / 2),
+			static_cast<cl_int>(fieldDims.y / 2)};
+
+		visiblesSize = {
+			static_cast<cl_int>(visibleDims.x),
+			static_cast<cl_int>(visibleDims.y)};
+
+		fieldCentersSize = {
+			static_cast<cl_int>(numColumns),
+			static_cast<cl_int>(2)};
+
+		contrastsSize = {
+			static_cast<cl_int>(numColumns),
+			static_cast<cl_int>(numNodesInColumn)};
+
+		memoriesSize = {
+			static_cast<cl_int>(numColumns),
+			static_cast<cl_int>(numNodesInColumn),
+			static_cast<cl_int>(numNodesInField)};
+
+		clVisiblesRegion[0] = visiblesSize.x;
+		clVisiblesRegion[1] = visiblesSize.y;
+		clVisiblesRegion[2] = 1;
+
+		clFieldCentersRegion[0] = fieldCentersSize.x;
+		clFieldCentersRegion[2] = fieldCentersSize.y;
+		clFieldCentersRegion[2] = 1;
+
+		clContrastsRegion[0] = contrastsSize.x;
+		clContrastsRegion[1] = contrastsSize.y;
+		clContrastsRegion[2] = 1;
+
+		clMemoriesRegion[0] = memoriesSize.x;
+		clMemoriesRegion[1] = memoriesSize.y;
+		clMemoriesRegion[2] = memoriesSize.z;
+	}
 };
 
 #endif

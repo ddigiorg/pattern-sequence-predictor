@@ -7,7 +7,7 @@ EXECUTE = execute.exe
 
 all: $(EXECUTE)
 
-OBJS_E = ball.o cortex.o compute-system.o compute-program.o
+OBJS_E = ball.o region.o compute-system.o compute-program.o
 $(EXECUTE): $(OBJS_E)
 	$(CXX) $(LDLIBS) $(OBJS_E) -o $(EXECUTE)
 
@@ -24,8 +24,8 @@ ball.o: $(PATH_D)ball/ball.cpp
 # ==========
 PATH_A = ./source/app/
 
-cortex.o: $(PATH_A)cortex.cpp
-	$(CXX) $(INCLUDE) $(CFLAGS) $(PATH_A)cortex.cpp
+region.o: $(PATH_A)region.cpp
+	$(CXX) $(INCLUDE) $(CFLAGS) $(PATH_A)region.cpp
 
 #feynman.o: $(PATH_A)feynman.cpp
 #	$(CXX) $(INCLUDE) $(CFLAGS) $(PATH_A)feynman.cpp

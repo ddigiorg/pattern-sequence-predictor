@@ -9,19 +9,32 @@
 
 namespace utils
 {
-
-	typedef struct Vec2ui32
+	typedef struct Vec2i
 	{
-		uint32_t x, y;
+		int x, y;
 
-		Vec2ui32(){};
+		Vec2i(){};
 
-		Vec2ui32(uint32_t initX, uint32_t initY)
+		Vec2i(int initX, int initY)
 		{
 			x = initX;
 			y = initY;
 		}
-	} Vec2ui32;
+	} Vec2i;
+
+	typedef struct Vec3i
+	{
+		int x, y, z;
+
+		Vec3i(){};
+
+		Vec3i(int initX, int initY, int initZ)
+		{
+			x = initX;
+			y = initY;
+			z = initZ;
+		}
+	} Vec3i;
 
 	typedef struct Vec2f
 	{
@@ -50,6 +63,11 @@ namespace utils
 			a = initA;
 		}
 	} Vec4f;
+
+	inline cl::Image1D createImage1D(ComputeSystem &cs, cl_int  size, cl_channel_order channelOrder, cl_channel_type channelType)
+	{	
+		return cl::Image1D(cs.getContext(), CL_MEM_READ_WRITE, cl::ImageFormat(channelOrder, channelType), size);
+	}
 
 	inline cl::Image2D createImage2D(ComputeSystem &cs, cl_int2 size, cl_channel_order channelOrder, cl_channel_type channelType)
 	{	

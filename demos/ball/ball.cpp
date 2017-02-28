@@ -5,11 +5,12 @@
 #include "ball.h"
 
 #include "utils/render2d.h"
+#include "utils/text2d.h"
 
 #include "compute/compute-system.h"
 #include "compute/compute-program.h"
 
-#include "app/cortex.h"
+#include "app/region.h"
 
 #include <iostream>
 #include <vector>
@@ -20,124 +21,91 @@ int main()
 {
 	std::mt19937 rng(time(nullptr));
 
-	// Initialize Compute-Render Engine
-	utils::Vec2ui32 displaySize(1000, 600);
-
-	std::string feynman_cl = "source/app/cortex.cl"; // OpenCL kernel program
-
+	// Setup SFML render window
 	sf::RenderWindow window;
+	utils::Vec2i displaySize(800, 600);
 
 	window.create(sf::VideoMode(displaySize.x, displaySize.y), "FM - Ball", sf::Style::Default);
 
+	// Setup OpenCL
 	ComputeSystem cs;
 	ComputeProgram cp;
+	std::string kernels_cl = "source/app/region.cl"; // OpenCL kernel program
 
 	cs.init(ComputeSystem::_gpu);
 //	cs.printCLInfo();
+	cp.loadProgramFromSourceFile(cs, kernels_cl);  // change to loadFromSourceFile
 
-	cp.loadProgramFromSourceFile(cs, feynman_cl);  // change to loadFromSourceFile
+	utils::Vec3i sizeNeurons(16, 16, 10); // numColumns.x, numColumns.y, numNodesPerColumn
+	utils::Vec2i sizeInputs(48, 48);      // numNodesInInput.x, numNodesInInput.y
+	utils::Vec2i sizeFields(3, 3);        // numNodesInField.x, numNodesInField.y
+	int numHistories = 1;
 
-	utils::Vec2ui32 visibleSize(48, 48);
-	utils::Vec2ui32 blockSize(128, 128);
+	Ball ball(sizeInputs);
 
-	Ball ball(visibleSize);
+	Region region(rng);
 
-	Cortex cortex(rng);
+	region.initialize(cs, cp, sizeNeurons, sizeInputs, sizeFields, 1);
 
-	cortex.addVisibleBlock(
-		utils::Vec2ui32(128, 128), // blockSize
-		utils::Vec2ui32(  8,   8), // chunkSize
-		utils::Vec2ui32( 48,  48), // visibleSize
-		utils::Vec2ui32(  3,   3), // fieldSize
-		0.25f);                    // learningRate
+	Render2D renderInputs(sizeInputs);
+	Render2D renderOutputs(sizeInputs);
+//	Text2D textWinners(utils::Vec2i(blockSize.x, blockSize.y));
 
-	cortex.addMemoryBlocks(
-		3,                         // numBlocks
-		utils::Vec2ui32(128, 128), // blockSize
-		utils::Vec2ui32(  8,   8), // chunkSize
-		0.25f);                    // learningRate
+	renderInputs.setPosition(utils::Vec2i(375, 500));
+	renderInputs.setScale(4.0f);
 
-	cortex.addPredictBlock(
-		utils::Vec2ui32(128, 128),  // blockSize
-		utils::Vec2ui32(  8,   8)); // chunkSize
+	renderOutputs.setPosition(utils::Vec2i(625, 500));
+	renderOutputs.setScale(4.0f);
 
-	cortex.initialize(cs, cp);
+//	textWinners.setPosition(utils::Vec2i(375, 300));
+//	textWinners.setScale(1.0f);
 
-	std::vector<float> ballData = ball.getPixelR();
+	bool quitFlag = false;
+	bool stepFlag = false;
 
-	Render2D renderWinnersOldest(blockSize);
-	Render2D renderVisibleInputs(visibleSize);
-	Render2D renderWinners0(blockSize);
-	Render2D renderPredicts(blockSize);
-	Render2D renderVisibleOutputs(visibleSize);
-
-	renderWinnersOldest.setPosition(utils::Vec2ui32(150, 250));
-	renderWinnersOldest.setScale(2.0f);
-
-	renderVisibleInputs.setPosition(utils::Vec2ui32(450, 500));
-	renderVisibleInputs.setScale(3.0f);
-
-	renderWinners0.setPosition(utils::Vec2ui32(450, 250));
-	renderWinners0.setScale(2.0f);
-
-	renderPredicts.setPosition(utils::Vec2ui32(750, 250));
-	renderPredicts.setScale(2.0f);
-
-	renderVisibleOutputs.setPosition(utils::Vec2ui32(750, 500));
-	renderVisibleOutputs.setScale(3.0f);
-
-	bool quit = false;
-	bool cont = false;
-	while (!quit)
+	while (!quitFlag)
 	{
 		sf::Event windowEvent;
 		while (window.pollEvent(windowEvent))
 		{
 			if (windowEvent.type == sf::Event::Closed)
 			{
-				quit = true;
+				quitFlag = true;
 				break;
 			}
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 			{
-				cont = true;
+				stepFlag = true;
 			}
 		}
  
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		{
-			quit = true;
+			quitFlag = true;
 			break;
 		}
 
-		if (cont)
+		if (stepFlag)
 		{
 			ball.step();
 
-			ballData = ball.getPixelR();
+			region.step(cs, ball.getPixelR(), true);
+//			region.learn(cs);
 
-			cortex.setVisibleInputs(cs, ballData);
+			renderInputs.setCheckered(region.getInputs(cs), sizeFields);
+			renderOutputs.setCheckered(region.getOutputs(cs), sizeFields);
+//			textWinners.setText(region.getWinners(cs));
 
-			cortex.step(cs, true);
+			window.clear(sf::Color::Black);
 
-			renderWinnersOldest.setPixelsR(cortex.getChunkWinnersOldest(cs));
-			renderVisibleInputs.setPixelsR(cortex.getVisibleInputs(cs));
-//			renderWinners0.setPixelsR(cortex.getChunkWinners(cs, 0));
-//			renderPredicts.setPixelsR(cortex.getChunkPredicts(cs));
-			renderWinners0.setPixelsRB(cortex.getChunkWinners(cs, 0), cortex.getChunkPredicts(cs));
-			renderVisibleOutputs.setPixelsR(cortex.getVisibleOutputs(cs));
+			window.draw(renderInputs.getSprite());
+			window.draw(renderOutputs.getSprite());
+//			window.draw(textWinners.getText());
 
-			window.draw(renderWinnersOldest.getSprite());
-			window.draw(renderVisibleInputs.getSprite());
-			window.draw(renderWinners0.getSprite());
-//			window.draw(renderPredicts.getSprite());
-			window.draw(renderVisibleOutputs.getSprite());
-
-			cont = false;
+			stepFlag = false;
 		}
 
-		//glDisplay.drawFPS();
 		window.display();
 	}
 }
