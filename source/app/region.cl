@@ -382,6 +382,8 @@ kernel void learnSequenceMemories(
 	{
 		int learnIdx = read_imagef(sequenceLearnIndexR, sampler, 0).x;
 
+		printf("%i\n", learnIdx);
+
 		int pattern;
 
 		for (int s = 1; s < sizeSequence; s++)

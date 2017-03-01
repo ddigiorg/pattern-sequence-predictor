@@ -29,6 +29,11 @@ public:
 
 	void step(ComputeSystem& cs, std::vector<float> dataVector, bool learnFlag);
 
+	void encode(ComputeSystem& cs, std::vector<float> dataVector);
+	void predict(ComputeSystem& cs);
+	void decode(ComputeSystem& cs);
+	void learn(ComputeSystem& cs);
+
 	void forecast(ComputeSystem& cs);
 
 	std::vector<float> getInputs(ComputeSystem &cs);
@@ -36,11 +41,6 @@ public:
 //	std::vector<float> getWinners(ComputeSystem &cs);
 
 private:
-	void encode(ComputeSystem& cs);
-	void predict(ComputeSystem& cs);
-	void decode(ComputeSystem& cs);
-	void learn(ComputeSystem& cs);
-
 	std::mt19937 _rng;
 
 	cl_float2 _initialMemoryRange = {0.0f, 0.0001f};
@@ -111,6 +111,7 @@ private:
 	cl::Image1D _patternLearnFlag;
 
 	cl::Image1D _sequence;
+	cl::Image1D _forecast;
 	cl::Image2D _sequenceMemories;
 	cl::Image1D _sequenceSums;
 	cl::Image1D _predictMemories;

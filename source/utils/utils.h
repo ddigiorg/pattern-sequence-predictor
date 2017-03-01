@@ -7,6 +7,8 @@
 
 #include "compute/compute-system.h"
 
+#include <random>
+
 namespace utils
 {
 	typedef struct Vec2i
@@ -63,6 +65,12 @@ namespace utils
 			a = initA;
 		}
 	} Vec4f;
+
+	inline float getRandomFloat(float min, float max)
+	{
+		float ran = (float) rand() / RAND_MAX;
+		return min + (max - min) * ran;
+	}
 
 	inline cl::Image1D createImage1D(ComputeSystem &cs, cl_int  size, cl_channel_order channelOrder, cl_channel_type channelType)
 	{	

@@ -19,26 +19,27 @@
 
 int main()
 {
-	std::mt19937 rng(time(nullptr));
+	std::mt19937 rng(time(nullptr));  // for initializing random weights
+	srand(time(NULL));  // for getting random floats in utils
 
 	// Setup SFML render window
 	sf::RenderWindow window;
 	utils::Vec2i displaySize(800, 600);
 
-	window.create(sf::VideoMode(displaySize.x, displaySize.y), "FM - Ball", sf::Style::Default);
+	window.create(sf::VideoMode(displaySize.x, displaySize.y), "DM - Ball", sf::Style::Default);
 
 	// Setup OpenCL
 	ComputeSystem cs;
 	ComputeProgram cp;
-	std::string kernels_cl = "source/app/region.cl"; // OpenCL kernel program
+	std::string kernels_cl = "source/app/region.cl";
 
 	cs.init(ComputeSystem::_gpu);
 //	cs.printCLInfo();
 	cp.loadProgramFromSourceFile(cs, kernels_cl);  // change to loadFromSourceFile
 
-	utils::Vec3i sizeNeurons(16, 16, 10); // numColumns.x, numColumns.y, numNodesPerColumn
-	utils::Vec2i sizeInputs(48, 48);      // numNodesInInput.x, numNodesInInput.y
-	utils::Vec2i sizeFields(3, 3);        // numNodesInField.x, numNodesInField.y
+	utils::Vec3i sizeNeurons(48, 48, 2); // numColumns.x, numColumns.y, numNodesPerColumn
+	utils::Vec2i sizeInputs(48, 48);     // numNodesInInput.x, numNodesInInput.y
+	utils::Vec2i sizeFields(1, 1);       // numNodesInField.x, numNodesInField.y
 	int numHistories = 1;
 
 	Ball ball(sizeInputs);
@@ -47,63 +48,60 @@ int main()
 
 	region.initialize(cs, cp, sizeNeurons, sizeInputs, sizeFields, 1);
 
-	Render2D renderInputs(sizeInputs);
-	Render2D renderOutputs(sizeInputs);
-//	Text2D textWinners(utils::Vec2i(blockSize.x, blockSize.y));
+	Render2D scene(sizeInputs);
 
-	renderInputs.setPosition(utils::Vec2i(375, 500));
-	renderInputs.setScale(4.0f);
+	scene.setPosition(utils::Vec2i(400, 300));
+	scene.setScale(6.0f);
 
-	renderOutputs.setPosition(utils::Vec2i(625, 500));
-	renderOutputs.setScale(4.0f);
+	bool quit = false;
+	bool pause = false;
 
-//	textWinners.setPosition(utils::Vec2i(375, 300));
-//	textWinners.setScale(1.0f);
-
-	bool quitFlag = false;
-	bool stepFlag = false;
-
-	while (!quitFlag)
+	while (!quit)
 	{
+		// Handle SFML window events
 		sf::Event windowEvent;
 		while (window.pollEvent(windowEvent))
 		{
 			if (windowEvent.type == sf::Event::Closed)
 			{
-				quitFlag = true;
+				quit = true;
 				break;
 			}
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 			{
-				stepFlag = true;
+				pause = false;
+			}
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			{
+				quit = true;
+				break;
 			}
 		}
  
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-		{
-			quitFlag = true;
-			break;
-		}
-
-		if (stepFlag)
+		if (!pause)
 		{
 			ball.step();
 
-			region.step(cs, ball.getPixelR(), true);
-//			region.learn(cs);
+			region.encode(cs, ball.getPixelData());
+			region.predict(cs);
+			region.decode(cs);
+			region.learn(cs);
 
-			renderInputs.setCheckered(region.getInputs(cs), sizeFields);
-			renderOutputs.setCheckered(region.getOutputs(cs), sizeFields);
-//			textWinners.setText(region.getWinners(cs));
+//			for (int i = 0; i < 5; i++)
+//			{
+//				region.predict(cs);
+//			}
+
+			scene.setPixelData('g', false, region.getInputs(cs));
+			scene.setPixelData('b', false, region.getOutputs(cs));
 
 			window.clear(sf::Color::Black);
 
-			window.draw(renderInputs.getSprite());
-			window.draw(renderOutputs.getSprite());
-//			window.draw(textWinners.getText());
+			window.draw(scene.getSprite());
 
-			stepFlag = false;
+			pause = true;
 		}
 
 		window.display();

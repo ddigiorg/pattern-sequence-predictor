@@ -253,60 +253,11 @@ void Region::initialize(
 	cs.getQueue().finish();
 }
 
-void Region::step(ComputeSystem& cs, std::vector<float> dataVector, bool learnFlag)
+void Region::encode(ComputeSystem &cs, std::vector<float> dataVector)
 {
 	cs.getQueue().enqueueWriteImage(_inputs, CL_TRUE, _zeroOrigin, _clRegionInputs, 0, 0, dataVector.data());
 	cs.getQueue().finish();
 
-	encode(cs);
-
-	predict(cs);
-
-	decode(cs);
-
-	if (learnFlag)
-		learn(cs);
-}
-
-void Region::forecast(ComputeSystem &cs)
-{
-
-}
-
-std::vector<float> Region::getInputs(ComputeSystem &cs)
-{
-	std::vector<float> dataVector(_sizeInputs.x * _sizeInputs.y);
-
-	cs.getQueue().enqueueReadImage(_inputs, CL_TRUE, _zeroOrigin, _clRegionInputs, 0, 0, dataVector.data());
-	cs.getQueue().finish();
-
-	return dataVector;
-}
-
-std::vector<float> Region::getOutputs(ComputeSystem &cs)
-{
-	std::vector<float> dataVector(_sizeOutputs.x * _sizeOutputs.y);
-
-	cs.getQueue().enqueueReadImage(_outputs, CL_TRUE, _zeroOrigin, _clRegionOutputs, 0, 0, dataVector.data());
-	cs.getQueue().finish();
-
-	return dataVector;
-}
-
-/*
-std::vector<float> Region::getWinners(ComputeSystem &cs)
-{
-	std::vector<float> dataVector(_numColumns);
-
-	cs.getQueue().enqueueReadImage(_winnerNeurons, CL_TRUE, _zeroOrigin, _clRegionWinnerNeurons, 0, 0, dataVector.data());
-	cs.getQueue().finish();
-
-	return dataVector;
-}
-*/
-
-void Region::encode(ComputeSystem &cs)
-{
 	_setInputSumsKernel.setArg(0, _inputs);
 	_setInputSumsKernel.setArg(1, _fieldCenters);
 	_setInputSumsKernel.setArg(2, _inputMemories);
@@ -439,3 +390,35 @@ void Region::learn(ComputeSystem &cs)
 	cs.getQueue().enqueueNDRangeKernel(_learnSequenceMemoriesKernel, cl::NullRange, _range);
 	cs.getQueue().finish();
 }
+
+std::vector<float> Region::getInputs(ComputeSystem &cs)
+{
+	std::vector<float> dataVector(_sizeInputs.x * _sizeInputs.y);
+
+	cs.getQueue().enqueueReadImage(_inputs, CL_TRUE, _zeroOrigin, _clRegionInputs, 0, 0, dataVector.data());
+	cs.getQueue().finish();
+
+	return dataVector;
+}
+
+std::vector<float> Region::getOutputs(ComputeSystem &cs)
+{
+	std::vector<float> dataVector(_sizeOutputs.x * _sizeOutputs.y);
+
+	cs.getQueue().enqueueReadImage(_outputs, CL_TRUE, _zeroOrigin, _clRegionOutputs, 0, 0, dataVector.data());
+	cs.getQueue().finish();
+
+	return dataVector;
+}
+
+/*
+std::vector<float> Region::getWinners(ComputeSystem &cs)
+{
+	std::vector<float> dataVector(_numColumns);
+
+	cs.getQueue().enqueueReadImage(_winnerNeurons, CL_TRUE, _zeroOrigin, _clRegionWinnerNeurons, 0, 0, dataVector.data());
+	cs.getQueue().finish();
+
+	return dataVector;
+}
+*/

@@ -13,86 +13,84 @@
 class Ball
 {
 public:
-	Ball(utils::Vec2i spaceSize)
+	Ball(utils::Vec2i sizeScene)
 	{
-		_spaceSize = spaceSize;
+		_sizeScene = sizeScene;
 
-		_position = utils::Vec2i(5, 5);
+		_pixelData.resize(_sizeScene.x * _sizeScene.y);
 
-//		_position = utils::Vec2i(spaceSize.x / 2, spaceSize.y / 2);
-
-		_initialPosition = _position;
-
-		_velocity = utils::Vec2f(0.0f, 0.0f);
+		_sizeBall.x = 1;
+		_sizeBall.y = 1;
 
 		_radius = 1;
 
-		_pixelR.resize(_spaceSize.x * _spaceSize.y);
+		reset();
 	}
  
 	void reset()
 	{
-		_position.x = _initialPosition.x;
-		_position.y = _initialPosition.y;
+		_position.x = _sizeScene.x / 2;
+		_position.y = _sizeScene.y / 2;
+
+//		_position.x = (int)(utils::getRandomFloat(12.0f,  36.0f));
+//		_position.y = (int)(utils::getRandomFloat(10.0f, 35.0f));
 
 		_velocity.x = 0.0f;
 		_velocity.y = 0.0f;
+
+//		_velocity.x = (int)(2.0f - utils::getRandomFloat(0.0f, 4.0f));
+//		_velocity.y = (int)(2.0f - utils::getRandomFloat(0.0f, 4.0f));
 	}
 
 	void step()
 	{
-		int i = 0;
-		float value;
-		float value2;
-		for (int y = 0; y < _spaceSize.y; y++)
+		for (int y = 0; y < _sizeScene.y; y++)
 		{
-			for (int x = 0; x < _spaceSize.x; x++)
+			for (int x = 0; x < _sizeScene.x; x++)
 			{
-				i = x + (_spaceSize.x * y);
+				int i = x + _sizeScene.x * y;
+
+				float value;
 
 				// border
-				value = (x == 0 || x == _spaceSize.x - 1 || y == 0 || y == _spaceSize.y - 1) ? 1.0f : 0.0f;
+				value = (x == 0 || x == _sizeScene.x - 1 || y == 0 || y == _sizeScene.y - 1) ? 1.0f : 0.0f;
 
 				// ball position
 				if (
-					x >= _position.x - _radius &&
-					x <  _position.x + _radius &&
-					y >= _position.y - _radius &&
-					y <  _position.y + _radius)
+					x >= (int)_position.x - _radius &&
+					x <  (int)_position.x + _radius &&
+					y >= (int)_position.y - _radius &&
+					y <  (int)_position.y + _radius)
 					{
 						value = 1.0f;
 					}
-					//else
-					//  value = 0.0f;
 
-					_pixelR[i] = value;
+					_pixelData[i] = value;
 			}
 		}
 
-		/*
-		_position.y += 3.0f;
-
-		if (_position.y >= 45.0f)
-			reset();
-		*/
-
-		if (_position.y <= 5.0f)
-			_velocity.y = 3.0f * _acceleration;
-		
-		if (_position.y >= 42.0f)
-			_velocity.y = 3.0f * -_acceleration;
-
-		_position.y += _velocity.y;
-
-		/*
 		_velocity.y += _acceleration;
 
 		_position.x += _velocity.x;
 		_position.y += _velocity.y;
 
-		bool onGround = _position.y + _radius >= _spaceSize.y - 1;
+		bool hitGround    = _position.y + _radius >= _sizeScene.y - 1;
+		bool hitWallLeft  = _position.x + _radius <  1;
+		bool hitWallRight = _position.x + _radius >= _sizeScene.x - 1;
 
-		if (onGround)
+		if (hitWallLeft)
+		{
+			_velocity.x = -_velocity.x;
+			_position.x = 1 + _radius;
+		}
+
+		if (hitWallRight)
+		{
+			_velocity.x = -_velocity.x;
+			_position.x = _sizeScene.y - 1 - _radius;
+		}
+
+		if (hitGround)
 		{
 			float vSquaredX = _velocity.x * _velocity.x;
 			float vSquaredY = _velocity.y * _velocity.y;
@@ -103,25 +101,26 @@ public:
 			}
 			else
 			{
+				_velocity.x *=  0.75f;
 				_velocity.y *= -0.75f;
-				_position.y = _spaceSize.y - 1 - _radius;
+				_position.y = _sizeScene.y - 1.0f - _radius;
 			}
 		}
-		*/
 		
 	}
 
-	std::vector<float> getPixelR()
+	std::vector<float> getPixelData()
 	{
-		return _pixelR;
+		return _pixelData;
 	}
 
 private:
-	std::vector<float> _pixelR;
+	std::vector<float> _pixelData;
 
-	utils::Vec2i _spaceSize;
-	utils::Vec2i _position;
-	utils::Vec2i _initialPosition;
+	utils::Vec2i _sizeScene;
+	utils::Vec2i _sizeBall;
+
+	utils::Vec2f _position;
 	utils::Vec2f _velocity;
 	float _acceleration = 1.0f;
 
