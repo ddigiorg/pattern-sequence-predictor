@@ -1,10 +1,6 @@
 # Pattern & Sequence Predictor
 
-The Pattern & Sequence Predictor (PSP) is a machine intelligence architecture based on intelligence principles of the mammalian neocortex and inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  PSP learns and predicts spatial-temporal sensory-motor patterns from sparse distributed neuron activations observed and encoded from an input space.
-
-## Objective
-
-The objective of this project is 
+Pattern & Sequence Predictor (PSP) is a machine intelligence architecture based on intelligence principles of the mammalian neocortex and inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  PSP learns and predicts spatial-temporal sensory-motor patterns from sparse distributed neuron activations observed and encoded from an input space.
 
 ## Theory
 
