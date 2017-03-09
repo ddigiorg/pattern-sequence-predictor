@@ -17,7 +17,7 @@ Due to the seemingly random and complex nature of dynamical systems, only short 
 
 ## Principles
 
-#### Spatial-Temporal
+### Spatial-Temporal
 
 Physicists and science fiction often talk about "the space-time continuum",  mathematical model that combines space and time into a single interwoven continuum.  Our brains operate in a "spatial-temporal" environment.
 
