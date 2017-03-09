@@ -4,36 +4,46 @@ Pattern & Sequence Predictor (PSP) is a machine intelligence architecture based 
 
 ## Theory
 
-dynamical systems
-
-A friend tosses you a ball and you catch it.  The ball sails through the air with a trajectory mathematically modeled by Newtonian Physics (or General Relativity for the masochist).  To recieve the ball, your arm moves to the necessary position with each joint modeled through inverse kinematics.  To solve these mathematical problems, you must know the mass of the ball, its initial velocity, the force of gravity on Earth, the length of each portion of the arm, etc.  However we neither know the exact values of these parameters, 
+The idea is over time shit repeats itself.  We can see this shit and build up experience knowing that this shit happend.  Therefore if we see similar shit happening, we can predict that similar shit will happen. 
 
 
-However, the brain has an intuitive sense about the physics of the ball without a n.  A child with no familiarity of basic physics theorums and mathematical models still knows that a ball thrown up will fall back down.
+If someone throws you a ball and you wish to catch it, your brain does not calculate the ball's trajectory via Newtonian physics and does not calculate the required arm position to make the catch via inverse kinematics.  Rather your brain builds up a familiarity or intuition, or "muscle memory", about the ball's movements and your arm's movements by observing them move through time.
 
+This intuition comes from Taken's Theorum, a principle of Dynamical Systems and Chaos Theory.  Taken's theorum states that if you observe one parameter of a state-space over time you can build a predictive model, or manifold, of the state-space.  In our environment we have visible states like green grass, blue skies, a friend, and a ball traveling towards you through the air.  However our universe has invisible states (or order) we call gravity, physics, electromagnitism, etc.  Taken's theorum simply states by seeing our environment over time we build an understanding of hidden causal relationships, i.e. the common proverbial phrase "what goes up, must come down".  By using our past experiences of a ball moving through time and seeing the ball move we can safely assume it will fall down to the earth.
 
-The game of catch you and your friend played is modeled differently in the human brain through "muscle memory".  Since birth you have been constantly observing the environment through the sensors in your eyes, ears, and body.  
+Of course this principle extends beyond falling balls.  Any form of data viewed over time can build an internal predictive intuition of the world.
+
+Due to the seemingly random and complex nature of dynamical systems, only short term predictions are accurate.
 
 ## Principles
 
-spatial-temporal
+#### Spatial-Temporal
 
-Spatial: A "space" is a n-dimensional extent in which objects occur and have relative position.  Human examples include:
+Physicists and science fiction often talk about "the space-time continuum",  mathematical model that combines space and time into a single interwoven continuum.  Our brains operate in a "spatial-temporal" environment.
+
+A spatial phenomenon or "space" is a n-dimensional extent in which objects occur and have relative position.  Human sensors and actuator spatial examples include:
 - Visual: the human retina is a 2d sheet of photoreceptors that respond to red, green, and blue light intensity.
 - Auditory: the human cochlea is a 1d line (structurally a 2d spiral) with hairs that respond to vibrations induced by sound frequency.
 - Somatosensory: 
 - Motor: 
 
-Temporal
+A temporal phenomenon or "time" is a 1-dimensional 1-directional sequence of spatial events.  Human sensors and actuator temporal examples include:
+- Visual
+- Autitory
+- Somatosensory
+- Motor
 
-sensory-motor
+#### Sensory-Motor
 
+Intelligent creatures have inputs and outputs.
 
-Columns with nodes
+#### Sparse Distributed Representation (SDR) 
 
-Sparse Distributed Representation (SDR) 
+not all neurons are on at once.  In fact the amount of active neurons at a given moment is very sparse.
 
-On-line learning
+#### On-line learning
+
+no backprop, learn-as-you-go, faster
 
 ## Functions
 
