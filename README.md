@@ -33,15 +33,15 @@ A temporal phenomenon or "time" is a 1-dimensional 1-directional sequence of spa
 - Somatosensory
 - Motor
 
-#### Sensory-Motor
+### Sensory-Motor
 
 Intelligent creatures have inputs and outputs.
 
-#### Sparse Distributed Representation (SDR) 
+### Sparse Distributed Representation (SDR) 
 
 not all neurons are on at once.  In fact the amount of active neurons at a given moment is very sparse.
 
-#### On-line learning
+### On-line learning
 
 no backprop, learn-as-you-go, faster
 
@@ -49,7 +49,7 @@ no backprop, learn-as-you-go, faster
 
 PSP has 4 core functions: Spatial Encoding, Temporal Encoding, Decoding, and Learning.
 
-#### Spatial Encoding
+### Spatial Encoding
 
 At each time step PSP encodes data from the input space into a "spatial pattern", a single value representing the observed input.
 
@@ -72,11 +72,11 @@ To achieve the architecture uses cortical columns of neurons that behave like Se
 
 The Euclidian distance compares two sets of values and computes how similar they are to each other.  A shorter distance means the values are more similar while a larger distance means the values are less similar.  For each column, the node with the smallest distance is the winner node, the node who's memories are the most similar to the column's receptive field input values.
 
-#### Temporal Encoding (Prediction)
+### Temporal Encoding (Prediction)
 
-#### Decoding
+### Decoding
 
-#### Learning
+### Learning
 
 ## Improvements
 - Improve pattern and sequence recognition by chunking setPatternSums and setSequenceSums
