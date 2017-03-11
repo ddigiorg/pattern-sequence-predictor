@@ -20,13 +20,22 @@ Human-like intelligence:
 
 ### Environment
 
-Intelligent beings exist in a spatial-temporal environment called the Universe, all of time and space and its contents.  The universe is governed by natural laws the sciences seek to understand (gravity, nuclear forces, electromagnetism, etc.) which provide order: repeatable concepts or events which are predictable.  For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  The fact that Terra does not, with chaotic intent, decide to careen away from the warm loving embrace of Sol into the cold dark void is a blessing of order.  Extending the concept of chaos, Earth does not explode into a soup of matter-energy and infinite impossibilities like the random unpredictability of static on a TV.  We can rest comfortably assured Earth-matter will remain and revolve around the Sun as long as the natural order, understood or not, remains stable.
+Environment is governed by the spatial-temporal natural order of concepts or events.
+
+Intelligent beings exist in a environment called the Universe, all of time and space and its contents.  The universe is governed by natural laws the sciences seek to understand (gravity, nuclear forces, electromagnetism, etc.) which provide order: repeatable concepts or events which are predictable.  For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  The fact that Terra does not, with chaotic intent, decide to careen away from the warm loving embrace of Sol into the cold dark void is a blessing of order.  Extending the concept of chaos, Earth does not explode into a soup of matter-energy and infinite impossibilities like the random unpredictability of static on a TV.  We can rest comfortably assured Earth-matter will remain and revolve around the Sun as long as the natural order, understood or not, remains stable.
 
 Due to the predictability of repeating concepts or events, this natural order, intelligent creatures have a basis where they can learn and predict the future.  This is knowledge.
 
+A spatial phenomenon or "space" is a n-dimensional extent in which objects occur and have relative position.  Human sensor spatial examples include:
+- Visual: the human retina is a 2d plane of photoreceptors that respond to red, green, and blue light intensity.
+- Auditory: the human cochlea is a 1d line (structurally a 2d spiral) with hairs that respond to vibrations induced by sound waves.
+- Somatosensory: 
+
 ### Knowledge
 
-Fundamentally, knowledge is sequences of events or concepts observed by an intelligence.  In a spatial-temporal environment, an intelligence observes through sensors (eyes, ears, noses, tounges, nerves, etc.) and influences through motors (muscles, vocal cords, etc).  By experiencing and learning knowledge, the intelligence, if faced with a similar experience, may use its memories to predict a future outcome.  Then the intelligence may use its motor functions to influence the environment to achieve a desired outcome.  For example, say a friend throws a ball to you.  
+Knowledge is sensory and/or motor sequences of concepts or events.
+
+In a spatial-temporal environment, an intelligence observes through sensors (eyes, ears, noses, tounges, nerves, etc.) and influences through motors (muscles, vocal cords, etc).  By experiencing and learning knowledge, the intelligence, if faced with a similar experience, may use its memories to predict a future outcome.  Then the intelligence may use its motor functions to influence the environment to achieve a desired outcome.  For example, say a friend throws a ball to you.  
 
 
 Important events that happen that the intelligence failed to predict recieve attention and learning.
