@@ -24,12 +24,16 @@ Environment is governed by the spatial-temporal natural order of concepts or eve
 
 Intelligent beings exist in a environment called the Universe, all of time and space and its contents.  The universe is governed by natural laws the sciences seek to understand (gravity, nuclear forces, electromagnetism, etc.) which provide order: repeatable concepts or events which are predictable.  For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  The fact that Terra does not, with chaotic intent, decide to careen away from the warm loving embrace of Sol into the cold dark void is a blessing of order.  Extending the concept of chaos, Earth does not explode into a soup of matter-energy and infinite impossibilities like the random unpredictability of static on a TV.  We can rest comfortably assured Earth-matter will remain and revolve around the Sun as long as the natural order, understood or not, remains stable.
 
-Due to the predictability of repeating concepts or events, this natural order, intelligent creatures have a basis where they can learn and predict the future.  This is knowledge.
-
-A spatial phenomenon or "space" is a n-dimensional extent in which objects occur and have relative position.  Human sensor spatial examples include:
-- Visual: the human retina is a 2d plane of photoreceptors that respond to red, green, and blue light intensity.
-- Auditory: the human cochlea is a 1d line (structurally a 2d spiral) with hairs that respond to vibrations induced by sound waves.
+A spatial phenomenon or "space" is a n-dimensional extent in which objects occur and have relative position.  Examples include:
+- Visual: the human retina is a 2d plane of photoreceptors that respond to red, green, and blue light frequencies.
+- Auditory: the human cochlea is a 1d line (structurally a 2d spiral) with hairs that respond to vibrations induced by sound frequencies.
 - Somatosensory: 
+
+A temporal phenomenon or "time" is a 1-dimensional 1-directional sequence of spatial events.  Examples include:
+- Visual
+- Autitory
+- Somatosensory
+- Motor
 
 ### Knowledge
 
@@ -42,8 +46,11 @@ Important events that happen that the intelligence failed to predict recieve att
 
 ## Architecture
 
+The mammalian neocortex facilitates the concepts of intelligence discussed above.
 
-### Sparse Distributed Representation (SDR) 
+### Cortical Columns
+
+### Sparsly Distributed Neurons
 
 not all neurons are on at once.  In fact the amount of active neurons at a given moment is very sparse.
 
