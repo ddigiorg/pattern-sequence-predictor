@@ -4,20 +4,32 @@ Pattern & Sequence Predictor (PSP) is a machine intelligence architecture based 
 
 ## Theory
 
-"The beginning of wisdom is the definition of terms" is a quote attributed to Athenian philosopher Socrates.  In order to understand the principles of Machine Intelligence, one must 
+"The beginning of wisdom is the definition of terms" is a quote attributed to Athenian philosopher Socrates.  In order to understand the principles of Machine Intelligence, one must first define intelligence and its related concepts: the environment where an intelligence exists and the knowledge intelligence uses.
 
 ### Intelligence
 
+Intelligence exists in an ordered environment and acquires knowledge in an attempt to achieve a wide range of goals. 
+
+Something that is intelligent [Ref]:
+
+continuously learns
+interacts with the environment
+is general in nature
+has goal-oriented behavior
+
 ### Environment
 
-Intelligent beings exist in an environment, a place called the Universe which is all of time and space and its contents.  The universe is governed by natural laws (gravity, nuclear forces, electromagnetism, etc.) which provide order: events or concepts which repeat themselves and provide predictability.  For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  The fact that Terra does not with chaotic intent decide to careen away from the warm loving embrace of Sol into the cold dark void is a blessing of order.  Extending the concept of chaos, the Earth does not explode into an unpredictable soup of inter- and extra-universal possibilities but rather remains relatively stable.
-
-
+Intelligent beings exist in a spatial-temporal environment called the Universe, all of time and space and its contents.  The universe is governed by natural laws the sciences seek to understand (gravity, nuclear forces, electromagnetism, etc.) which provide order: repeatable events or concepts providing predictability.  For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  The fact that Terra does not with chaotic intent decide to careen away from the warm loving embrace of Sol into the cold dark void is a blessing of order.  Extending the concept of chaos, the Earth does not explode into an unpredictable soup of inter- and extra-universal possibilities but rather remains relatively stable.  We can rest comfortably predicting Earth will revolve around the Sun as long as the natural order, understood or not, remains stable. 
 
 ### Knowledge
 
-Fundamentally, knowledge is observed sequences of events.
+Fundamentally, knowledge is observed sequences of events or concepts.  In the spatial-temporal environment intelligent creatures observe through sensors (eyes, ears, noses, tounges, nerves, etc.) and influence through motors (muscles).  
 
+
+By observing the repeated spatial-temporal events of environment over time
+
+
+Important events that happen that the intelligence failed to predict recieve attention and learning.
 
 ## Principles
 
