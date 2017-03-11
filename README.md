@@ -1,6 +1,6 @@
 # Divination Machine
 
-Divination Machine (DM) is a Machine Intelligence architecture based on principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  Although its name implies the architecture seeks knowledge of the future by supernatural means, DM's abilities are much more grounded.  Divination Machine:
+Divination Machine (DM) is a Machine Intelligence architecture based on principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  Although its name implies the architecture seeking knowledge of the future by supernatural means, DM's abilities are much more grounded.  Divination Machine:
 
 - Observes a spatial-temporal sensory-motor input space
 - At each time step, encodes the spatial inputs into sparsly distributed neuron activations
