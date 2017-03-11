@@ -1,19 +1,23 @@
 # Pattern & Sequence Predictor
 
-Pattern & Sequence Predictor (PSP) is a machine intelligence architecture based on intelligence principles of the mammalian neocortex and inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  PSP learns and predicts spatial-temporal sensory-motor patterns from sparse distributed neuron activations observed and encoded from an input space.
+Pattern & Sequence Predictor (PSP) is a machine intelligence architecture based on intelligence principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  PSP learns sparse distributed neuron activations observed from spatial-temporal sensory-motor  and encoded from an input space.
 
 ## Theory
 
-The idea is over time shit repeats itself.  We can see this shit and build up experience knowing that this shit happend.  Therefore if we see similar shit happening, we can predict that similar shit will happen. 
+"The beginning of wisdom is the definition of terms" is a quote attributed to Athenian philosopher Socrates.  In order to understand the principles of Machine Intelligence, one must 
+
+### Intelligence
+
+### Environment
+
+Intelligent beings exist in an environment, a place called the Universe which is all of time and space and its contents.  The universe is governed by natural laws (gravity, nuclear forces, electromagnetism, etc.) which provide order: events or concepts which repeat themselves and provide predictability.  For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  The fact that Terra does not with chaotic intent decide to careen away from the warm loving embrace of Sol into the cold dark void is a blessing of order.  Extending the concept of chaos, the Earth does not explode into an unpredictable soup of inter- and extra-universal possibilities but rather remains relatively stable.
 
 
-If someone throws you a ball and you wish to catch it, your brain does not calculate the ball's trajectory via Newtonian physics and does not calculate the required arm position to make the catch via inverse kinematics.  Rather your brain builds up a familiarity or intuition, or "muscle memory", about the ball's movements and your arm's movements by observing them move through time.
 
-This intuition comes from Taken's Theorum, a principle of Dynamical Systems and Chaos Theory.  Taken's theorum states that if you observe one parameter of a state-space over time you can build a predictive model, or manifold, of the state-space.  In our environment we have visible states like green grass, blue skies, a friend, and a ball traveling towards you through the air.  However our universe has invisible states (or order) we call gravity, physics, electromagnitism, etc.  Taken's theorum simply states by seeing our environment over time we build an understanding of hidden causal relationships, i.e. the common proverbial phrase "what goes up, must come down".  By using our past experiences of a ball moving through time and seeing the ball move we can safely assume it will fall down to the earth.
+### Knowledge
 
-Of course this principle extends beyond falling balls.  Any form of data viewed over time can build an internal predictive intuition of the world.
+Fundamentally, knowledge is observed sequences of events.
 
-Due to the seemingly random and complex nature of dynamical systems, only short term predictions are accurate.
 
 ## Principles
 
