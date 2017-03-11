@@ -1,57 +1,38 @@
 # Pattern & Sequence Predictor
 
-Pattern & Sequence Predictor (PSP) is a machine intelligence architecture based on intelligence principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  PSP learns sparse distributed neuron activations observed from spatial-temporal sensory-motor  and encoded from an input space.
+Pattern & Sequence Predictor (PSP) is a machine intelligence architecture based on intelligence principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  PSP learns sparsly distributed neuron activations observed and encoded from spatial-temporal sensory-motor input space.  Additionally, PSP predicts a possible future output space based on the architecture's memories.
 
 ## Theory
 
 "The beginning of wisdom is the definition of terms" is a quote attributed to Athenian philosopher Socrates.  In order to understand the principles of Machine Intelligence, one must first define intelligence and its related concepts: the environment where an intelligence exists and the knowledge intelligence uses.
 
+Ultimately one of the greatest promises of Machine Intelligence is not in domains familiar to humans like vision and hearing, but in abstract domains like radio waves, internet data, and .
+
 ### Intelligence
 
-Intelligence exists in an ordered environment and acquires knowledge in an attempt to achieve a wide range of goals. 
+Intelligence acquires knowledge in an attempt to achieve goals. 
 
-Something that is intelligent [Ref]:
-
-continuously learns
-interacts with the environment
-is general in nature
-has goal-oriented behavior
+Human-like intelligence:
+- observes and interacts with an ordered environment
+- continuously learns (acquires knowledge)
+- is general in nature (attempts to achieve a wide range of goals)
+- has goal-oriented behavior
 
 ### Environment
 
-Intelligent beings exist in a spatial-temporal environment called the Universe, all of time and space and its contents.  The universe is governed by natural laws the sciences seek to understand (gravity, nuclear forces, electromagnetism, etc.) which provide order: repeatable events or concepts providing predictability.  For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  The fact that Terra does not with chaotic intent decide to careen away from the warm loving embrace of Sol into the cold dark void is a blessing of order.  Extending the concept of chaos, the Earth does not explode into an unpredictable soup of inter- and extra-universal possibilities but rather remains relatively stable.  We can rest comfortably predicting Earth will revolve around the Sun as long as the natural order, understood or not, remains stable. 
+Intelligent beings exist in a spatial-temporal environment called the Universe, all of time and space and its contents.  The universe is governed by natural laws the sciences seek to understand (gravity, nuclear forces, electromagnetism, etc.) which provide order: repeatable concepts or events which are predictable.  For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  The fact that Terra does not, with chaotic intent, decide to careen away from the warm loving embrace of Sol into the cold dark void is a blessing of order.  Extending the concept of chaos, Earth does not explode into a soup of matter-energy and infinite impossibilities like the random unpredictability of static on a TV.  We can rest comfortably assured Earth-matter will remain and revolve around the Sun as long as the natural order, understood or not, remains stable.
+
+Due to the predictability of repeating concepts or events, this natural order, intelligent creatures have a basis where they can learn and predict the future.  This is knowledge.
 
 ### Knowledge
 
-Fundamentally, knowledge is observed sequences of events or concepts.  In the spatial-temporal environment intelligent creatures observe through sensors (eyes, ears, noses, tounges, nerves, etc.) and influence through motors (muscles).  
-
-
-By observing the repeated spatial-temporal events of environment over time
+Fundamentally, knowledge is sequences of events or concepts observed by an intelligence.  In a spatial-temporal environment, an intelligence observes through sensors (eyes, ears, noses, tounges, nerves, etc.) and influences through motors (muscles, vocal cords, etc).  By experiencing and learning knowledge, the intelligence, if faced with a similar experience, may use its memories to predict a future outcome.  Then the intelligence may use its motor functions to influence the environment to achieve a desired outcome.  For example, say a friend throws a ball to you.  
 
 
 Important events that happen that the intelligence failed to predict recieve attention and learning.
 
-## Principles
+## Architecture
 
-### Spatial-Temporal
-
-Physicists and science fiction often talk about "the space-time continuum",  mathematical model that combines space and time into a single interwoven continuum.  Our brains operate in a "spatial-temporal" environment.
-
-A spatial phenomenon or "space" is a n-dimensional extent in which objects occur and have relative position.  Human sensors and actuator spatial examples include:
-- Visual: the human retina is a 2d sheet of photoreceptors that respond to red, green, and blue light intensity.
-- Auditory: the human cochlea is a 1d line (structurally a 2d spiral) with hairs that respond to vibrations induced by sound frequency.
-- Somatosensory: 
-- Motor: 
-
-A temporal phenomenon or "time" is a 1-dimensional 1-directional sequence of spatial events.  Human sensors and actuator temporal examples include:
-- Visual
-- Autitory
-- Somatosensory
-- Motor
-
-### Sensory-Motor
-
-Intelligent creatures have inputs and outputs.
 
 ### Sparse Distributed Representation (SDR) 
 
