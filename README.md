@@ -1,12 +1,17 @@
-# Pattern & Sequence Predictor
+# Divination Machine
 
-Pattern & Sequence Predictor (PSP) is a machine intelligence architecture based on intelligence principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  PSP learns sparsly distributed neuron activations observed and encoded from spatial-temporal sensory-motor input space.  Additionally, PSP predicts a possible future output space based on the architecture's memories.
+Divination Machine (DM) is a Machine Intelligence architecture based on principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  Although its name implies the architecture seeks knowledge of the future by supernatural means, DM's abilities are much more grounded.  Divination Machine:
+
+- Observes a spatial-temporal sensory-motor input space
+- At each time step, encodes the spatial inputs into sparsly distributed neuron activations
+- Learns spatial and temporal encodings via memory
+- Predicts a possible future output space
 
 ## Theory
 
-"The beginning of wisdom is the definition of terms" is a quote attributed to Athenian philosopher Socrates.  In order to understand the principles of Machine Intelligence, one must first define intelligence and its related concepts: the environment where an intelligence exists and the knowledge intelligence uses.
+"The beginning of wisdom is the definition of terms" -Socrates.  
 
-Ultimately one of the greatest promises of Machine Intelligence is not in domains familiar to humans like vision and hearing, but in abstract domains like radio waves, internet data, and .
+To develop Machine Intelligence one must first define "intelligence" and its related concepts: the "environment" where an intelligence exists and the "knowledge" an intelligence uses.  Unfortunately, philosophers and scientists 
 
 ### Intelligence
 
