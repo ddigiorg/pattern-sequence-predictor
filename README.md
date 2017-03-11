@@ -1,27 +1,27 @@
 # Divination Machine
 
-Divination Machine (DM) is a Machine Intelligence architecture based on principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  Although its name implies the architecture seeking knowledge of the future by supernatural means, DM's abilities are much more grounded.  Divination Machine:
+Divination Machine (DM) is a Machine Intelligence architecture based on contemporary understanding of the mammalian neocortical principles and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  Although its name implies the invocation of the supernatural, DM's functionality is obviously grounded and mundane.  Divination Machine:
 
 - Observes a spatial-temporal sensory-motor input space
 - At each time step, encodes the spatial inputs into sparsly distributed neuron activations
-- Learns spatial and temporal encodings via memory
-- Predicts a possible future output space
+- Learns spatial and temporal encodings and stores them in memory
+- Predicts a possible future output space based on memories
 
 ## Theory
 
 "The beginning of wisdom is the definition of terms" -Socrates.  
 
-To develop Machine Intelligence one must first define "intelligence" and its related concepts: the "environment" where an intelligence exists and the "knowledge" an intelligence uses.  Unfortunately, philosophers and scientists 
+To develop Machine Intelligence one must first define "intelligence" and its related concepts: the "environment" where an intelligence exists and the "knowledge" an intelligence uses.  Unfortunately, philosophers and scientists do not agree on a single definition of intelligence.  But fear not for you are intelligent yourself!  Your the world you live in and your neocortex gives us clues on how we may define intelligence.  However, we must not be so self-centered because many other animals also exhibit intelligent behavior.  So let's define our terms.
 
 ### Intelligence
 
 Intelligence acquires knowledge in an attempt to achieve goals. 
 
-Human-like intelligence:
-- observes and interacts with an ordered environment
-- continuously learns (acquires knowledge)
-- is general in nature (attempts to achieve a wide range of goals)
-- has goal-oriented behavior
+Neocortical intelligence:
+- Observes and interacts with an ordered environment
+- Continuously learns (acquires knowledge)
+- Is general in nature (attempts to achieve a wide range of goals)
+- Has goal-oriented behavior
 
 ### Environment
 
@@ -44,8 +44,9 @@ A temporal phenomenon or "time" is a 1-dimensional 1-directional sequence of spa
 
 Knowledge is sensory and/or motor sequences of concepts or events.
 
-In a spatial-temporal environment, an intelligence observes through sensors (eyes, ears, noses, tounges, nerves, etc.) and influences through motors (muscles, vocal cords, etc).  By experiencing and learning knowledge, the intelligence, if faced with a similar experience, may use its memories to predict a future outcome.  Then the intelligence may use its motor functions to influence the environment to achieve a desired outcome.  For example, say a friend throws a ball to you.  
+In a spatial-temporal environment, an intelligence observes through sensors (eyes, ears, noses, tounges, nerves, etc.) and influences through motors (muscles, vocal cords, etc).  By experiencing and learning knowledge, the intelligence, if faced with a similar experience, may use its memories to predict a future outcome.  Then the intelligence may use its motor functions to influence the environment to achieve a desired outcome.  
 
+For example, say a friend throws a ball to you.  
 
 Important events that happen that the intelligence failed to predict recieve attention and learning.
 
