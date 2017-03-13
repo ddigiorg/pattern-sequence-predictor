@@ -2,10 +2,10 @@
 
 Divination Machine (DM) is a Machine Intelligence architecture based on intelligence principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  Although its name implies the invocation of the supernatural, DM's functionality is obviously mundane.  Divination Machine:
 
-- Observes a spatial-temporal sensory-motor input space
+- Observes spatial-temporal sensory-motor input
 - At each moment in time, encodes inputs into sparsly distributed neuron activations
 - Learns spatial and temporal encodings and stores them in memory
-- Predicts a possible future output space based on memories
+- Predicts a possible future output based on memories
 
 ## Philosophy
 
@@ -34,7 +34,7 @@ Time:  A temporal phenomenon or "sequence" is a 1-dimensional 1-directional prog
 
 ### Knowledge
 
-Intelligence aquires knowledge, sequences of patterns, by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory, learning, and intelligence uses what it has learned to make predictions about reoccouring events and influence events so that future events may occour.  In the neocortex, a specific set of neurons activate when it observes a pattern or sequence of patterns.  Activated neurons cause some neurons to enter a "predictive" state, expecting to be activated soon.  <WIP>
+Intelligence aquires knowledge, sequences of patterns, by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory, learning, and intelligence uses what it has learned to make predictions about reoccouring events and influence events so that future events may occour.
 
 ### Perspective
 
@@ -46,9 +46,15 @@ The mammalian neocortex facilitates the concepts of intelligence discussed above
 
 ### Cortical Columns
 
-### Sparsly Distributed Neurons
+A cortical column, or just "column", is a group of neurons that share a receptive field.
+
+### Sparse Distributed Representations (SDRs)
+
+A Sparse Distributed Representation (SDR) is a large vector of ones and zeros where the amount of zeros vastly outnumbers the amount of ones.   
 
 not all neurons are on at once.  In fact the amount of active neurons at a given moment is very sparse.
+
+In the neocortex, a specific set of neurons activate when it observes a pattern or sequence of patterns.  Activated neurons cause some neurons to enter a "predictive" state, expecting to be activated soon.
 
 ### On-line learning
 
@@ -60,16 +66,13 @@ PSP has 4 core functions: Spatial Encoding, Temporal Encoding, Decoding, and Lea
 
 ### Spatial Encoding
 
-At each time step PSP encodes data from the input space into a "spatial pattern", a single value representing the observed input.
-
-
+At each time step DM encodes data from the input into a SDR.  It then searches "Pattern Memory" to see if the SDR exists.  If it doesn't exist DM adds the SDR to its Pattern Memory.  If it exists then the index where it exists is called the "Spatial Encoding", a single integer value representing the spatial context observed input.
 
 Take for example a 9x9 grid of monochromatic pixels, a visual spatial-sensory input space we will use to demonstrate encoding.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Each pixel is a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 9x9 grid has 81 pixels which has 1,001^81, or ~1.08x10^243 unique possible spatial-sensory inputs.  This is about twice the estimated atoms in the universe!
 
 Spatial Sensitivity:  Intuitively if a human sees a 9x9 field of red with just 1 pixel just slightly less red we'd still recognize it as "a sea of red".  If that one pixel were to keep losing intensity, eventually the human brain would be able to recognize it as "a sea of red with a less red dot".  
 
 The amount of nodes in a column corresponds to the spatial-sensitivity of the PSP.  A 
-
 
 To achieve the architecture uses cortical columns of neurons that behave like Self Organizing Maps and observe a specific receptive field of the input space.  Each node in a column has memories corresponding to each receptive field input value.  Each node also has a "sum" value calculated by taking the Euclidian distance of every node's memory and corresponding input value:
 ```
