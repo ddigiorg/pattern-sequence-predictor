@@ -1,38 +1,43 @@
 # Divination Machine
 
-Divination Machine (DM) is a Machine Intelligence architecture based on contemporary understanding of the mammalian neocortical principles and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  Although its name implies the invocation of the supernatural, DM's functionality is obviously grounded and mundane.  Divination Machine:
+Divination Machine (DM) is a Machine Intelligence architecture based on intelligence principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  Although its name implies the invocation of the supernatural, DM's functionality is obviously mundane.  Divination Machine:
 
 - Observes a spatial-temporal sensory-motor input space
-- At each time step, encodes the spatial inputs into sparsly distributed neuron activations
+- At each moment in time, encodes inputs into sparsly distributed neuron activations
 - Learns spatial and temporal encodings and stores them in memory
 - Predicts a possible future output space based on memories
 
-## Theory
+## Philosophy
 
 "The beginning of wisdom is the definition of terms" -Socrates.  
 
-To develop Machine Intelligence one must first define "intelligence" and its related concepts: the "environment" where an intelligence exists and the "knowledge" an intelligence uses.  Unfortunately, philosophers and scientists do not agree on a single definition of intelligence.  But fear not for you are intelligent yourself!  Your the world you live in and your neocortex gives us clues on how we may define intelligence.  However, we must not be so self-centered because many other animals also exhibit intelligent behavior.  So let's define our terms.
+To develop Machine Intelligence one must first define "intelligence" and its principles.  Unfortunately philosophers and scientists do not agree on a single definition of intelligence, but most would agree humans are a species with intelligence capabilities.  Therefore, the mammalian neocortex and its experience with the world gives us some guidelines on how to explore intelligence.   
 
 ### Intelligence
 
-Intelligence acquires knowledge in an attempt to achieve goals. 
+Intelligence exists in an ordered environment and acquires knowledge in an attempt to achieve goals. 
 
-Neocortical intelligence:
-- Observes and interacts with an ordered environment
-- Continuously learns (acquires knowledge)
-- Is general in nature (attempts to achieve a wide range of goals)
-- Has goal-oriented behavior
+### Ordered Environment
 
-### Environment
+The ultimate model of reality for an intelligence is the environment it percieves.  We call it "Universe", all of time and space and its contents.  Thus far our Universe is governed by natural laws, human conceptions of gravity, nuclear forces, electromagnetism, etc., which provide order, reoccouring concepts which are therefore predictable.   For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  Earth does not randomly careen away from the Sun or explode into a soup of ever-changing infinite impossibilities (like unpredictability of static on a TV).  Therefore we can predict Earth will exist as-is and revolve around the Sun as long as the natural order, understood or not, remains stable.
 
-Environment is governed by the spatial-temporal natural order of concepts or events.
+### Knowledge
 
-Intelligent beings exist in a environment called the Universe, all of time and space and its contents.  The universe is governed by natural laws the sciences seek to understand (gravity, nuclear forces, electromagnetism, etc.) which provide order: repeatable concepts or events which are predictable.  For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  The fact that Terra does not, with chaotic intent, decide to careen away from the warm loving embrace of Sol into the cold dark void is a blessing of order.  Extending the concept of chaos, Earth does not explode into a soup of matter-energy and infinite impossibilities like the random unpredictability of static on a TV.  We can rest comfortably assured Earth-matter will remain and revolve around the Sun as long as the natural order, understood or not, remains stable.
+Intelligence aquires knowledge, sequences of patterns, by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory and intelligence uses memories of knowledge to make predictions about reoccouring events and influence events so that future events may occour.
+
+### Perspective
+
+All known intelligences thus far have limited perspective, how much an intelligence observes and how much it can remember.  Humans can not see and store all matter at all angles at all time and even if we could, the visible spectrum is just a small range of possible frequencies.  Thus, the ultimate promise of Machine Intelligence is being able to develop intelligences with greater or different perspectives.
+
+
+
+
+Thus to seek an understanding of intelligence(at least mammalian intelligence), we must have an idea of space and time.
 
 A spatial phenomenon or "space" is a n-dimensional extent in which objects occur and have relative position.  Examples include:
 - Visual: the human retina is a 2d plane of photoreceptors that respond to red, green, and blue light frequencies.
 - Auditory: the human cochlea is a 1d line (structurally a 2d spiral) with hairs that respond to vibrations induced by sound frequencies.
-- Somatosensory: 
+- Motor: 
 
 A temporal phenomenon or "time" is a 1-dimensional 1-directional sequence of spatial events.  Examples include:
 - Visual
@@ -40,15 +45,6 @@ A temporal phenomenon or "time" is a 1-dimensional 1-directional sequence of spa
 - Somatosensory
 - Motor
 
-### Knowledge
-
-Knowledge is sensory and/or motor sequences of concepts or events.
-
-In a spatial-temporal environment, an intelligence observes through sensors (eyes, ears, noses, tounges, nerves, etc.) and influences through motors (muscles, vocal cords, etc).  By experiencing and learning knowledge, the intelligence, if faced with a similar experience, may use its memories to predict a future outcome.  Then the intelligence may use its motor functions to influence the environment to achieve a desired outcome.  
-
-For example, say a friend throws a ball to you.  
-
-Important events that happen that the intelligence failed to predict recieve attention and learning.
 
 ## Architecture
 
