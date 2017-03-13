@@ -34,7 +34,7 @@ Time:  A temporal phenomenon or "sequence" is a 1-dimensional 1-directional prog
 
 ### Knowledge
 
-Intelligence aquires knowledge, sequences of patterns, by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory and intelligence uses memories of knowledge to make predictions about reoccouring events and influence events so that future events may occour.
+Intelligence aquires knowledge, sequences of patterns, by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory, learning, and intelligence uses what it has learned to make predictions about reoccouring events and influence events so that future events may occour.
 
 ### Perspective
 
