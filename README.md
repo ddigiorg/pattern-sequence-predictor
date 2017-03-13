@@ -40,7 +40,7 @@ Intelligence aquires knowledge, sequences of patterns, by observing its environm
 
 All known intelligences thus far have limited perspective, how much an intelligence observes and how much it can remember.  Humans can not see and store all matter at all angles at all time and even if we could, the visible spectrum is just a small range of possible frequencies.  Thus, the ultimate promise of Machine Intelligence is being able to develop intelligences with greater or different perspectives.
 
-## Architecture
+## DM Architecture
 
 The mammalian neocortex facilitates the concepts of intelligence discussed above.
 
@@ -54,7 +54,7 @@ not all neurons are on at once.  In fact the amount of active neurons at a given
 
 no backprop, learn-as-you-go, faster
 
-## Functions
+## DM Functions
 
 PSP has 4 core functions: Spatial Encoding, Temporal Encoding, Decoding, and Learning.
 
@@ -87,7 +87,7 @@ The Euclidian distance compares two sets of values and computes how similar they
 
 ### Learning
 
-## Improvements
+## Code Improvements
 - Improve pattern and sequence recognition by chunking setPatternSums and setSequenceSums
 - Change OpenCL images to buffers for much larger space allocation
 - Fix learnInputMemories by having each neuron learn to recognize different field values
