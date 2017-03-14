@@ -62,7 +62,7 @@ no backprop, learn-as-you-go, faster
 
 ## DM Functions
 
-PSP has 4 core functions: Spatial Encoding, Temporal Encoding, Decoding, and Learning.
+Divination Machine has 4 core functions: Spatial Encoding, Temporal Encoding, Decoding, and Learning.
 
 ### Spatial Encoding
 
