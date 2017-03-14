@@ -66,23 +66,38 @@ PSP has 4 core functions: Spatial Encoding, Temporal Encoding, Decoding, and Lea
 
 ### Spatial Encoding
 
-At each time step DM encodes data from the input into a SDR.  It then searches "Pattern Memory" to see if the SDR exists.  If it doesn't exist DM adds the SDR to its Pattern Memory.  If it exists then the index where it exists is called the "Spatial Encoding", a single integer value representing the spatial context observed input.
+At each time step DM Spatial Encoding:
+1. Converts the input into a SDR of neuron activations called "Column Winners"
+2. Searches "Pattern Memories" for the SDR and returns the pattern index, or "Spatial Encoding", if it exists
 
-Take for example a 9x9 grid of monochromatic pixels, a visual spatial-sensory input space we will use to demonstrate encoding.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Each pixel is a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 9x9 grid has 81 pixels which has 1,001^81, or ~1.08x10^243 unique possible spatial-sensory inputs.  This is about twice the estimated atoms in the universe!
+[PUT PICTURE HERE]
 
-Spatial Sensitivity:  Intuitively if a human sees a 9x9 field of red with just 1 pixel just slightly less red we'd still recognize it as "a sea of red".  If that one pixel were to keep losing intensity, eventually the human brain would be able to recognize it as "a sea of red with a less red dot".  
+#### Step 1
 
-The amount of nodes in a column corresponds to the spatial-sensitivity of the PSP.  A 
+In step one each column selects a winner neuron based on how well each neuron's memories compare to the receptive field's input values.  Each column essentially behaves like a Self Organizing Map where each neuron has a "sum" value calculated by taking the Euclidian distance of every node's memory and corresponding input value:
 
-To achieve the architecture uses cortical columns of neurons that behave like Self Organizing Maps and observe a specific receptive field of the input space.  Each node in a column has memories corresponding to each receptive field input value.  Each node also has a "sum" value calculated by taking the Euclidian distance of every node's memory and corresponding input value:
 ```
    for every value-memory pair i:
       sum += (value[i] - memory[i])^2
       
    Note: the square root of the Euclidian distance is removed for computational simplicity
 ```
-
 The Euclidian distance compares two sets of values and computes how similar they are to each other.  A shorter distance means the values are more similar while a larger distance means the values are less similar.  For each column, the node with the smallest distance is the winner node, the node who's memories are the most similar to the column's receptive field input values.
+
+#### Step 2
+
+It then searches "Pattern Memory" to see if the SDR exists.  If it doesn't exist DM adds the SDR to its Pattern Memory.  If it exists then the index where it exists is called the "Spatial Encoding", a single integer value representing the spatial context observed input.
+
+#### Example
+
+Take for example a 9x9 grid of monochromatic pixels, a spatial-sensory input we will use to demonstrate encoding.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Each pixel is a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 9x9 grid has 81 pixels which has 1,001^81, or ~1.08x10^243 unique possible spatial-sensory inputs.  This is about twice the estimated atoms in the universe!
+
+Spatial Sensitivity:  Intuitively if a human sees a 9x9 field of red with just 1 pixel just slightly less red we'd still recognize it as "a sea of red".  If that one pixel were to keep losing intensity, eventually the human brain would be able to recognize it as "a sea of red with a less red dot".  
+
+The amount of nodes in a column corresponds to the spatial-sensitivity of the PSP.  A 
+
+  
+
 
 ### Temporal Encoding (Prediction)
 
