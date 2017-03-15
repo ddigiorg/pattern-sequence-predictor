@@ -13,7 +13,7 @@ Divination Machine (DM) is a Machine Intelligence architecture based on intellig
 
 To develop Machine Intelligence one must first define "intelligence" and its principles.  Unfortunately philosophers and scientists do not agree on a single definition, but most would admit the human species is intelligent.  Therefore, the mammalian neocortex and how it experiences the world gives us some guidelines.  This project's definition of intelligence is:
 
-**Intelligence, existing in an ordered environment, acquires knowledge in an attempt to achieve goals.**
+Intelligence, existing in an ordered environment, acquires knowledge in an attempt to achieve goals.
 
 ### Ordered Environment
 
