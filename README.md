@@ -21,12 +21,16 @@ Intelligence exists in an ordered environment and acquires knowledge in an attem
 
 The ultimate model of reality for an intelligence is the environment it percieves.  We call it "Universe", all of time and space and its contents.  Thus far our Universe is governed by natural laws, human conceptions of gravity, nuclear forces, electromagnetism, etc., which provide order, reoccouring concepts which are therefore predictable.   For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  Earth does not randomly careen away from the Sun or explode into a soup of ever-changing infinite impossibilities (like unpredictability of static on a TV).  Therefore we can predict Earth will exist as-is and revolve around the Sun as long as the natural order, understood or not, remains stable.  Thus to seek an understanding of intelligence, we must have a concept of an intelligence's spatial-temporal perception of the Universe.
 
-Space:  A spatial phenomenon or "pattern" is a n-dimensional extent in which objects occur and have relative position.  Examples include:
+#### Space
+
+A spatial phenomenon or "pattern" is a n-dimensional extent in which objects occur and have relative position.  Examples include:
 - Visual: the human retina is a 2d plane of photoreceptors that respond to red, green, and blue light frequencies.
 - Auditory: the human cochlea is a 1d line (structurally a 2d spiral) with hairs that respond to vibrations induced by sound frequencies.
 - Motor: 
 
-Time:  A temporal phenomenon or "sequence" is a 1-dimensional 1-directional progression of spatial patterns.  Examples include:
+#### Time
+
+A temporal phenomenon or "sequence" is a 1-dimensional 1-directional progression of spatial patterns.  Examples include:
 - Visual: Watching a ball fall from the sky.
 - Autitory
 - Somatosensory
