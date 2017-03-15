@@ -42,14 +42,6 @@ All known intelligences thus far have limited perspective, how much an intellige
 
 ## DM Concepts
 
-### Sparse Distributed Representations (SDRs)
-
-A Sparse Distributed Representation (SDR) is a large vector of ones and zeros where the amount of zeros vastly outnumbers the amount of ones.   
-
-not all neurons are on at once.  In fact the amount of active neurons at a given moment is very sparse.
-
-In the neocortex, a specific set of neurons activate when it observes a pattern or sequence of patterns.  Activated neurons cause some neurons to enter a "predictive" state, expecting to be activated soon.
-
 ### Cortical Columns
 
 A cortical column, or just "column", is a group of neurons that share a receptive field of the DM input.
@@ -62,6 +54,22 @@ Therefore
 
 Spatial Sensitivity:  Intuitively if a human sees a 9x9 field of red with just 1 pixel just slightly less red we'd still recognize it as "a sea of red".  If that one pixel were to keep losing intensity, eventually the human brain would be able to recognize it as "a sea of red with a less red dot". 
 
+### Sparse Distributed Representations (SDRs)
+
+A Sparse Distributed Representation (SDR) is a large vector of ones and zeros where the amount of zeros vastly outnumbers the amount of ones.
+
+To save space in physical computer memory, the locations of the 1's are stored rather than the entire vector of 0s and 1s.
+
+not all neurons are on at once.  In fact the amount of active neurons at a given moment is very sparse.
+
+In the neocortex, a specific set of neurons activate when it observes a pattern or sequence of patterns.  Activated neurons cause some neurons to enter a "predictive" state, expecting to be activated soon.
+
+In DM's case, the activated neurons in each column for the SDR.
+
+### Sequences of Patterns
+
+WIP
+
 ## DM Functions
 
 Divination Machine has 4 core functions: Spatial Encoding, Temporal Encoding, Decoding, and Learning.
@@ -70,27 +78,23 @@ Divination Machine has 4 core functions: Spatial Encoding, Temporal Encoding, De
 
 At each time step Spatial Encoding:
 1. Converts the input into a SDR of neuron activations called "Column Winners"
-2. Searches "Pattern Memories" for the SDR and returns the pattern index, or "Spatial Encoding", if it exists
+2. Searches "Pattern Memories" for "Column Winners" and if it exists returns the memory index, or "Spatial Encoding"
 
 #### Step 1
 
 [PUT PICTURE HERE]
 
-Each column selects a winner neuron by looking at every neuron in a column comparing it's memories to the column's receptive field input values.  The best matching neuron is the winner neuron of the column.  Programatically, each column essentially behaves like a Self Organizing Map where each neuron has a "sum" value calculated by taking the Euclidian distance of every node's memory and corresponding input value:
+Each column selects a winner neuron by looking at every neuron in a column comparing it's memories to the column's receptive field input values.  The best matching neuron is the winner neuron of the column.  Programatically, each column essentially behaves like a Self Organizing Map where each neuron has a "sum" value calculated by taking the Euclidian distance of every node's memory and corresponding input value.  For example:
 
-```
-   for every value-memory pair i:
-      sum += (value[i] - memory[i])^2
-      
-   Note: the square root of the Euclidian distance is removed for computational simplicity
-```
+[PUT PICTURE HERE]
+
 The Euclidian distance compares two sets of values and computes how similar they are to each other.  A shorter distance means the values are more similar while a larger distance means the values are less similar.  For each column, the node with the smallest distance is the winner node, the node who's memories are the most similar to the column's receptive field input values.
 
 #### Step 2
 
 [PUT PICTURE HERE]
 
-DM then searches its "Pattern Memory" to see if the column winners SDR exists.  If it doesn't exist DM adds the SDR to its Pattern Memory.  If it exists then the index where it exists is called the "Spatial Encoding", a single integer value representing the spatial context observed input.
+DM then searches its "Pattern Memory" to see if "Column Winners" SDR exists.  If it doesn't exist DM adds the SDR to its Pattern Memory.  If it exists then the index where it exists is called the "Spatial Encoding", a single integer value representing the spatial context observed input.
 
 ### Temporal Encoding (Prediction)
 
