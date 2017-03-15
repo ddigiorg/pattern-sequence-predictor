@@ -38,13 +38,13 @@ A temporal phenomenon or "sequence" is a 1-dimensional 1-directional progression
 
 ### Knowledge
 
-Knowledge, or experience, is simply sequences of patterns.  Intelligence aquires knowledge by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory, which is called "learning".  If an intelligence has learned an experience at a previous time in its life and sees a similar experience happening now, the intelligence can predict a similar outcome will occour.  Therefore, intelligence uses what it has learned to make predictions about reoccouring events and then can influence the environment so that future desired events may occour.
+Knowledge, or experience, is simply sequences of patterns.  Intelligence aquires knowledge by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory, through a process called "learning".  If the intelligence observes a portion of a sequence, it can predict the upcomming patterns in the sequence will occour.  Therefore, intelligence uses what it has learned to make predictions about the future and can influence the environment so that desired events may occour.
 
-#### Pattern
+However, the neocortex does not operate with colors, sounds, or tastes.  Fundamentally, a pattern in the neocortex is a set of neurons that activate in responce to an input at a certain time, or a spatial input.  For example, let's say you see a blue circle.  A set of neurons in your neocortex will activate in response to the visual stimulus of seeing the blue circle.  If the circle were suddenly to become red, another set of neurons would respond.  A sequence in the neocortex is therefore a sequential progression of neuron activations.  By converting, or encoding, observed patterns into neuron activations, the neocortex has a unified standard for storing and operating on knowledge.
 
-A pattern is a set of neurons that activate in responce to an input at a certain time, or a spatial input.  For example, let's say you see a blue circle.  A set of neurons in your neocortex will activate in response to the visual stimulus of seeing the blue circle.  If the circle were suddenly to become red, another set of neurons would respond.  If the blue circle were to change into a square, the neurons that responded to the center of the circle would remain activated and the neurons near the edges of the circle would deactivate/activate based on the shape change.
+For example:
 
-#### Sequence
+[INSERT PICTURE HERE]
 
 ### Perspective
 
