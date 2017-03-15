@@ -11,11 +11,11 @@ Divination Machine (DM) is a Machine Intelligence architecture based on intellig
 
 "The beginning of wisdom is the definition of terms" -Socrates.  
 
-To develop Machine Intelligence one must first define "intelligence" and its principles.  Unfortunately philosophers and scientists do not agree on a single definition of intelligence, but most would agree humans are a species with intelligence capabilities.  Therefore, the mammalian neocortex and its experience with the world gives us some guidelines on how to explore intelligence.   
+To develop Machine Intelligence one must first define "intelligence" and its principles.  Unfortunately philosophers and scientists do not agree on a single definition of intelligence, but most would agree the human species has intelligence.  Therefore, the mammalian neocortex and how humans and animals experience the world gives us some guidelines on how to explore intelligence.   
 
 ### Intelligence
 
-Intelligence exists in an ordered environment and acquires knowledge in an attempt to achieve goals. 
+Intelligence exists in an ordered environment and acquires knowledge in an attempt to achieve goals.
 
 ### Ordered Environment
 
