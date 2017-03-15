@@ -11,15 +11,17 @@ Divination Machine (DM) is a Machine Intelligence architecture based on intellig
 
 "The beginning of wisdom is the definition of terms" -Socrates.  
 
-To develop Machine Intelligence one must first define "intelligence" and its principles.  Unfortunately philosophers and scientists do not agree on a single definition of intelligence, but most would agree the human species has intelligence.  Therefore, the mammalian neocortex and how humans and animals experience the world gives us some guidelines on how to explore intelligence.   
+To develop Machine Intelligence one must first define "intelligence" and its principles.  Unfortunately philosophers and scientists do not agree on a single definition, but most would agree the human species is intelligent.  Therefore, the mammalian neocortex and how it experiences the world gives us some guidelines on how to explore intelligence.  This project's definition of intelligence is:
 
-### Intelligence
-
-Intelligence exists in an ordered environment and acquires knowledge in an attempt to achieve goals.
+Intelligence, existing in an ordered environment, acquires knowledge in an attempt to achieve goals.
 
 ### Ordered Environment
 
-The ultimate model of reality for an intelligence is the environment it percieves.  We call it "Universe", all of time and space and its contents.  Thus far our Universe is governed by natural laws, human conceptions of gravity, nuclear forces, electromagnetism, etc., which provide order, reoccouring concepts which are therefore predictable.   For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  Earth does not randomly careen away from the Sun or explode into a soup of ever-changing infinite impossibilities (like unpredictability of static on a TV).  Therefore we can predict Earth will exist as-is and revolve around the Sun as long as the natural order, understood or not, remains stable.  Thus to seek an understanding of intelligence, we must have a concept of an intelligence's spatial-temporal perception of the Universe.
+The ultimate model of reality for an intelligence is the environment it percieves.  We call it "Universe", all of time and space and its contents.  Thus far our Universe is governed by natural laws, human conceptions of gravity, nuclear forces, electromagnetism, etc., which provide order, reoccouring concepts which are therefore predictable.   For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  Earth does not randomly careen away from the Sun or explode into a soup of ever-changing infinite impossibilities (like unpredictability of static on a TV).  Therefore we can predict Earth will exist as-is and revolve around the Sun as long as the natural order, understood or not, remains stable.  Although many of these principles of order can not be directly observed, they are known to exist through their effects.
+
+### Perspective
+
+Involved with the ordered environment is the intelligence observing it.  Because we live in a space-time Universe, to seek an understanding of intelligence we must have a concept of an intelligence's spatial-temporal perception of its environment.
 
 #### Space
 
@@ -36,6 +38,8 @@ A temporal phenomenon or "sequence" is a 1-dimensional 1-directional progression
 - Somatosensory
 - Motor
 
+All known intelligences thus far have limited perspective: how much an intelligence observes and how much it can remember.  Humans can not see and store all matter at all angles at all time and even if we could, the visible spectrum is just a small range of possible frequencies.  Thus, the ultimate promise of Machine Intelligence is being able to develop intelligences with greater or different perspectives.
+
 ### Knowledge
 
 Knowledge, or experience, is simply sequences of patterns.  Intelligence aquires knowledge by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory, through a process called "learning".  If the intelligence observes a portion of a sequence, it can predict the upcomming patterns in the sequence will occour.  Therefore, intelligence uses what it has learned to make predictions about the future and can influence the environment so that desired events may occour.
@@ -47,10 +51,6 @@ However, the neocortex does not operate with colors, sounds, or tastes.  Fundame
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/knowledge_figure_2.png)
 
 In the above graphic, pink and cyan circles as well as "wait" and "eat!" actions have been encoded into neuron activations.
-
-### Perspective
-
-All known intelligences thus far have limited perspective, how much an intelligence observes and how much it can remember.  Humans can not see and store all matter at all angles at all time and even if we could, the visible spectrum is just a small range of possible frequencies.  Thus, the ultimate promise of Machine Intelligence is being able to develop intelligences with greater or different perspectives.
 
 ## DM Functions
 
