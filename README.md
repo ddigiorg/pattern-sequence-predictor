@@ -82,17 +82,17 @@ At each time step Spatial Encoding:
 
 #### Step 1
 
-[PUT PICTURE HERE]
+![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/spatial_encoding_figure_1.png)
 
 Each column selects a winner neuron by looking at every neuron in a column comparing it's memories to the column's receptive field input values.  The best matching neuron is the winner neuron of the column.  Programatically, each column essentially behaves like a Self Organizing Map where each neuron has a "sum" value calculated by taking the Euclidian distance of every node's memory and corresponding input value.  For example:
 
-[PUT PICTURE HERE]
+![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/spatial_encoding_figure_2.png)
 
 The Euclidian distance compares two sets of values and computes how similar they are to each other.  A shorter distance means the values are more similar while a larger distance means the values are less similar.  For each column, the node with the smallest distance is the winner node, the node who's memories are the most similar to the column's receptive field input values.
 
 #### Step 2
 
-[PUT PICTURE HERE]
+![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/spatial_encoding_figure_3.png)
 
 DM then searches its "Pattern Memory" to see if "Column Winners" SDR exists.  If it doesn't exist DM adds the SDR to its Pattern Memory.  If it exists then the index where it exists is called the "Spatial Encoding", a single integer value representing the spatial context observed input.
 
