@@ -42,7 +42,7 @@ Knowledge, or experience, is simply sequences of patterns.  Intelligence aquires
 
 #### Pattern
 
-A pattern is a set of neurons that activate in responce to an input at a certain time.  For example, let's say you see a blue circle.  A set of neurons in your neocortex will activate in response to the visual stimulus of seeing the blue circle.  If the circle were suddenly to become red, another set of neurons would respond.  If the blue circle were to change into a square, the neurons that responded to the center of the circle would remain activated and the neurons near the edges of the circle would deactivate/activate based on the shape change.
+A pattern is a set of neurons that activate in responce to an input at a certain time, or a spatial input.  For example, let's say you see a blue circle.  A set of neurons in your neocortex will activate in response to the visual stimulus of seeing the blue circle.  If the circle were suddenly to become red, another set of neurons would respond.  If the blue circle were to change into a square, the neurons that responded to the center of the circle would remain activated and the neurons near the edges of the circle would deactivate/activate based on the shape change.
 
 #### Sequence
 
@@ -52,7 +52,11 @@ All known intelligences thus far have limited perspective, how much an intellige
 
 ## DM Functions
 
-Divination Machine has 4 core functions: Spatial Encoding, Temporal Encoding, Decoding, and Learning.
+Divination Machine has 4 core functions:
+1. Spatial Encoding
+2. Temporal Encoding
+3. Decoding
+4. Learning.
 
 ### Spatial Encoding
 
