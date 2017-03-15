@@ -46,6 +46,8 @@ However, the neocortex does not operate with colors, sounds, or tastes.  Fundame
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/knowledge_figure_2.png)
 
+In the above graphic, pink and cyan circles as well as "wait" and "eat!" actions have been encoded into neuron activations.
+
 ### Perspective
 
 All known intelligences thus far have limited perspective, how much an intelligence observes and how much it can remember.  Humans can not see and store all matter at all angles at all time and even if we could, the visible spectrum is just a small range of possible frequencies.  Thus, the ultimate promise of Machine Intelligence is being able to develop intelligences with greater or different perspectives.
