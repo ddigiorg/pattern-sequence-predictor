@@ -60,7 +60,7 @@ Divination Machine has 4 core functions:
 
 ### Spatial Encoding
 
-A spatial encoding is simply a pattern observed from an input at a single moment in time.  At each time step Spatial Encoding:
+A spatial encoding is a pattern of neurons activated from an observed input at a single moment in time.  At each time step Spatial Encoding:
 1. Converts the input into a Sparse Distributed Representation (SDR) of neuron activations called "Column Winners"
 2. Searches "Pattern Memories" for "Column Winners" and if it exists returns the memory index, or "Spatial Encoding"
 
