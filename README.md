@@ -38,29 +38,17 @@ A temporal phenomenon or "sequence" is a 1-dimensional 1-directional progression
 
 ### Knowledge
 
-Intelligence aquires knowledge, sequences of patterns, by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory, learning, and intelligence uses what it has learned to make predictions about reoccouring events and influence events so that future events may occour.
+Knowledge, or experience, is simply sequences of patterns.  Intelligence aquires knowledge by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory, which is called "learning".  If an intelligence has learned an experience at a previous time in its life and sees a similar experience happening now, the intelligence can predict a similar outcome will occour.  Therefore, intelligence uses what it has learned to make predictions about reoccouring events and then can influence the environment so that future desired events may occour.
+
+#### Pattern
+
+A pattern is a set of neurons that activate in responce to an input at a certain time.  For example, let's say you see a blue circle.  A set of neurons in your neocortex will activate in response to the visual stimulus of seeing the blue circle.  If the circle were suddenly to become red, another set of neurons would respond.  If the blue circle were to change into a square, the neurons that responded to the center of the circle would remain activated and the neurons near the edges of the circle would deactivate/activate based on the shape change.
+
+#### Sequence
 
 ### Perspective
 
 All known intelligences thus far have limited perspective, how much an intelligence observes and how much it can remember.  Humans can not see and store all matter at all angles at all time and even if we could, the visible spectrum is just a small range of possible frequencies.  Thus, the ultimate promise of Machine Intelligence is being able to develop intelligences with greater or different perspectives.
-
-## DM Concepts
-
-### Sparse Distributed Representations (SDRs)
-
-A Sparse Distributed Representation (SDR) is a large vector of ones and zeros where the amount of zeros vastly outnumbers the amount of ones.
-
-To save space in physical computer memory, the locations of the 1's are stored rather than the entire vector of 0s and 1s.
-
-not all neurons are on at once.  In fact the amount of active neurons at a given moment is very sparse.
-
-In the neocortex, a specific set of neurons activate when it observes a pattern or sequence of patterns.  Activated neurons cause some neurons to enter a "predictive" state, expecting to be activated soon.
-
-In DM's case, the activated neurons in each column for the SDR.
-
-### Sequences of Patterns
-
-WIP
 
 ## DM Functions
 
@@ -68,7 +56,7 @@ Divination Machine has 4 core functions: Spatial Encoding, Temporal Encoding, De
 
 ### Spatial Encoding
 
-At each time step Spatial Encoding:
+A spatial encoding is simply a pattern observed from an input at a single moment in time.  At each time step Spatial Encoding:
 1. Converts the input into a Sparse Distributed Representation (SDR) of neuron activations called "Column Winners"
 2. Searches "Pattern Memories" for "Column Winners" and if it exists returns the memory index, or "Spatial Encoding"
 
