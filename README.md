@@ -40,13 +40,7 @@ Intelligence aquires knowledge, sequences of patterns, by observing its environm
 
 All known intelligences thus far have limited perspective, how much an intelligence observes and how much it can remember.  Humans can not see and store all matter at all angles at all time and even if we could, the visible spectrum is just a small range of possible frequencies.  Thus, the ultimate promise of Machine Intelligence is being able to develop intelligences with greater or different perspectives.
 
-## DM Architecture
-
-The mammalian neocortex facilitates the concepts of intelligence discussed above.
-
-### Cortical Columns
-
-A cortical column, or just "column", is a group of neurons that share a receptive field.
+## DM Concepts
 
 ### Sparse Distributed Representations (SDRs)
 
@@ -56,21 +50,23 @@ not all neurons are on at once.  In fact the amount of active neurons at a given
 
 In the neocortex, a specific set of neurons activate when it observes a pattern or sequence of patterns.  Activated neurons cause some neurons to enter a "predictive" state, expecting to be activated soon.
 
-### On-line learning
+### Cortical Columns
 
-no backprop, learn-as-you-go, faster
+A cortical column, or just "column", is a group of neurons that share a receptive field of the DM input.
+
+[PUT PICTURE HERE]
+
+In the above figure, the receptive field of a column is a 3x3 grid of monochromatic pixels.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Each pixel is a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 3x3 grid has 9 pixels in total which has 1,001^9, or ~1.01x10^27 unique possible color inputs at a single moment in time.  This is more than twice the estimated amount of neurons in the human brain, ~1x10^11 or about 100 billion neurons!
+
+Therefore 
+
+Spatial Sensitivity:  Intuitively if a human sees a 9x9 field of red with just 1 pixel just slightly less red we'd still recognize it as "a sea of red".  If that one pixel were to keep losing intensity, eventually the human brain would be able to recognize it as "a sea of red with a less red dot". 
 
 ## DM Functions
 
 Divination Machine has 4 core functions: Spatial Encoding, Temporal Encoding, Decoding, and Learning.
 
 ### Spatial Encoding
-
-To demonstrate Spatial Encoding we will look at an example of an input at a single time: a 9x9 grid of monochromatic pixels.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Each pixel is a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 9x9 grid has 81 pixels which has 1,001^81, or ~1.08x10^243 unique possible spatial-sensory inputs.  This is about twice the estimated atoms in the universe!
-
-Spatial Sensitivity:  Intuitively if a human sees a 9x9 field of red with just 1 pixel just slightly less red we'd still recognize it as "a sea of red".  If that one pixel were to keep losing intensity, eventually the human brain would be able to recognize it as "a sea of red with a less red dot".  
-
-The amount of nodes in a column corresponds to the spatial-sensitivity of the PSP.  A 
 
 At each time step Spatial Encoding:
 1. Converts the input into a SDR of neuron activations called "Column Winners"
@@ -80,7 +76,7 @@ At each time step Spatial Encoding:
 
 [PUT PICTURE HERE]
 
-In step one each column selects a winner neuron based on how well each neuron's memories compare to the receptive field's input values.  Each column essentially behaves like a Self Organizing Map where each neuron has a "sum" value calculated by taking the Euclidian distance of every node's memory and corresponding input value:
+Each column selects a winner neuron by looking at every neuron in a column comparing it's memories to the column's receptive field input values.  The best matching neuron is the winner neuron of the column.  Programatically, each column essentially behaves like a Self Organizing Map where each neuron has a "sum" value calculated by taking the Euclidian distance of every node's memory and corresponding input value:
 
 ```
    for every value-memory pair i:
@@ -94,7 +90,7 @@ The Euclidian distance compares two sets of values and computes how similar they
 
 [PUT PICTURE HERE]
 
-It then searches "Pattern Memory" to see if the SDR exists.  If it doesn't exist DM adds the SDR to its Pattern Memory.  If it exists then the index where it exists is called the "Spatial Encoding", a single integer value representing the spatial context observed input.
+DM then searches its "Pattern Memory" to see if the column winners SDR exists.  If it doesn't exist DM adds the SDR to its Pattern Memory.  If it exists then the index where it exists is called the "Spatial Encoding", a single integer value representing the spatial context observed input.
 
 ### Temporal Encoding (Prediction)
 
