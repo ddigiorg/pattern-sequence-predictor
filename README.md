@@ -17,26 +17,25 @@ Intelligence, existing in an ordered environment, acquires knowledge in an attem
 
 ### Ordered Environment
 
-The ultimate model of reality for an intelligence is the environment it percieves.  We call it "Universe", all of time and space and its contents.  Thus far our Universe is governed by natural laws, human conceptions of gravity, nuclear forces, electromagnetism, etc., which provide order, reoccouring concepts which are therefore predictable.   For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  Earth does not randomly careen away from the Sun or explode into a soup of ever-changing infinite impossibilities (like the unpredictability of static on a TV).  Therefore we can predict Earth will exist as-is and revolve around the Sun as long as the natural order, understood or not, remains stable.  Although many of these principles of order can not be directly observed, they are known to exist through their effects.
+The ultimate model of reality for an intelligence is the environment it percieves.  We call it "Universe", all of time and space and its contents.  Thus far our Universe is governed by natural laws, human conceptions of gravity, nuclear forces, electromagnetism, etc., which provide order, reoccouring concepts which are therefore predictable.   For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  Earth does not randomly careen away from the Sun or explode into a soup of ever-changing infinite impossibilities (like the unpredictability of static on a TV).  Therefore we can predict Earth will exist as-is and revolve around the Sun as long as the natural order, understood or not, remains stable.  
 
 ### Perspective
 
-Involved with the ordered environment is the intelligence observing it.  Because we live in a space-time Universe, to seek an understanding of intelligence we must have a concept of an intelligence's spatial-temporal perception of its environment.
+Although many of these principles of order can not be directly observed, they are known to exist through their effects.  In essence by observing the environment an intelligence gains an intuition for the underlying order of the environment.  Because we live in a space-time Universe, to seek an understanding of intelligence we must have a concept of an intelligence's spatial-temporal perception of its environment.
 
 #### Space
 
 A spatial phenomenon or "pattern" is a n-dimensional extent in which objects occur and have relative position.  Examples include:
 - Visual: the human retina is a 2d plane of photoreceptors that respond to red, green, and blue light frequencies.
-- Auditory: the human cochlea is a 1d line (structurally a 2d spiral) with hairs that respond to vibrations induced by sound frequencies.
-- Motor: 
+- Auditory: the human cochlea is a 1d line (structurally a 2d spiral) with hairs that respond to vibrations induced by sound frequencies
+- Proprioception: the angle of a joint relative to two pieces of the limb
 
 #### Time
 
 A temporal phenomenon or "sequence" is a 1-dimensional 1-directional progression of spatial patterns.  Examples include:
-- Visual: Watching a ball fall from the sky.
-- Autitory
-- Somatosensory
-- Motor
+- Visual: Seeing a ball fall from the sky
+- Autitory: Hearing the changing pitch in a song
+- Proprioception: Feeling the speed at which a joint moves
 
 All known intelligences thus far have limited perspective: how much an intelligence observes and how much it can remember.  Humans can not see and store all matter at all angles at all time and even if we could, the visible spectrum is just a small range of possible frequencies.  Thus, the ultimate promise of Machine Intelligence is being able to develop intelligences with greater or different perspectives.
 
