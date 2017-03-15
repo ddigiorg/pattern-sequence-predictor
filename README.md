@@ -44,9 +44,7 @@ Knowledge, or experience, is simply sequences of patterns.  Intelligence aquires
 
 However, the neocortex does not operate with colors, sounds, or tastes.  Fundamentally, a pattern in the neocortex is a set of neurons that activate in responce to an input at a certain time, or a spatial input.  For example, let's say you see a blue circle.  A set of neurons in your neocortex will activate in response to the visual stimulus of seeing the blue circle.  If the circle were suddenly to become red, another set of neurons would respond.  A sequence in the neocortex is therefore a sequential progression of neuron activations.  By converting, or encoding, observed patterns into neuron activations, the neocortex has a unified standard for storing and operating on knowledge.
 
-For example:
-
-[INSERT PICTURE HERE]
+![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/knowledge_figure_2.png)
 
 ### Perspective
 
