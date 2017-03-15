@@ -48,7 +48,6 @@ A cortical column, or just "column", is a group of neurons that share a receptiv
 
 [PUT PICTURE HERE]
 
-In the above figure, the receptive field of a column is a 3x3 grid of monochromatic pixels.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Each pixel is a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 3x3 grid has 9 pixels in total which has 1,001^9, or ~1.01x10^27 unique possible color inputs at a single moment in time.  This is more than twice the estimated amount of neurons in the human brain, ~1x10^11 or about 100 billion neurons!
 
 Therefore 
 
@@ -77,16 +76,18 @@ Divination Machine has 4 core functions: Spatial Encoding, Temporal Encoding, De
 ### Spatial Encoding
 
 At each time step Spatial Encoding:
-1. Converts the input into a SDR of neuron activations called "Column Winners"
+1. Converts the input into a Sparse Distributed Representation (SDR) of neuron activations called "Column Winners"
 2. Searches "Pattern Memories" for "Column Winners" and if it exists returns the memory index, or "Spatial Encoding"
 
 #### Step 1
 
-Each column selects a winner neuron by looking at every neuron in a column comparing it's memories to the column's receptive field input values.  The best matching neuron is the winner neuron of the column.  Programatically, each column essentially behaves like a Self Organizing Map where each neuron has a "sum" value calculated by taking the Euclidian distance of every node's memory and corresponding input value.
+A column, commonly refered to as a cortical "minicolumn" in neuroscience, is a group of neurons that share a receptive field, or a specific region, of the input space.  In DM each column selects a winner neuron by looking at every neuron in a column comparing it's memories to the column's receptive field input values.  The best matching neuron is the winner neuron of the column.  Programatically, each column essentially behaves like a Self Organizing Map where each neuron has a "sum" value calculated by taking the Euclidian distance of every node's memory and corresponding input value.
 
 The Euclidian distance compares two sets of values and computes how similar they are to each other.  A shorter distance means the values are more similar while a larger distance means the values are less similar.  For each column, the node with the smallest distance is the winner node, the node who's memories are the most similar to the column's receptive field input values.
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/spatial_encoding_figure_1.png)
+
+In the above figure, the receptive field of a column is a 3x3 grid of monochromatic pixels.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Each pixel is a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 3x3 grid has 9 pixels in total which has 1,001^9, or ~1.01x10^27 unique possible color inputs at a single moment in time.  This is more than twice the estimated amount of neurons in the human brain, ~1x10^11 or about 100 billion neurons!
 
 #### Step 2
 
