@@ -42,17 +42,6 @@ All known intelligences thus far have limited perspective, how much an intellige
 
 ## DM Concepts
 
-### Cortical Columns
-
-A cortical column, or just "column", is a group of neurons that share a receptive field of the DM input.
-
-[PUT PICTURE HERE]
-
-
-Therefore 
-
-Spatial Sensitivity:  Intuitively if a human sees a 9x9 field of red with just 1 pixel just slightly less red we'd still recognize it as "a sea of red".  If that one pixel were to keep losing intensity, eventually the human brain would be able to recognize it as "a sea of red with a less red dot". 
-
 ### Sparse Distributed Representations (SDRs)
 
 A Sparse Distributed Representation (SDR) is a large vector of ones and zeros where the amount of zeros vastly outnumbers the amount of ones.
@@ -87,7 +76,11 @@ The Euclidian distance compares two sets of values and computes how similar they
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/spatial_encoding_figure_1.png)
 
-In the above figure, the receptive field of a column is a 3x3 grid of monochromatic pixels.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Each pixel is a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 3x3 grid has 9 pixels in total which has 1,001^9, or ~1.01x10^27 unique possible color inputs at a single moment in time.  This is more than twice the estimated amount of neurons in the human brain, ~1x10^11 or about 100 billion neurons!
+In the above figure, the receptive field of a column is a 3x3 grid of monochromatic pixels.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Each pixel is a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 3x3 grid has 9 pixels in total which has 1,001^9, or ~1.01x10^27 unique possible color inputs at a single moment in time.  This is more than twice the estimated amount of neurons in the human brain (about 100 billion neurons)!
+
+Spatial Sensitivity:  Intuitively if a human sees a 9x9 field of red with just 1 pixel just slightly less red we'd still recognize it as "a sea of red".  If that one pixel were to keep losing intensity, eventually the human brain would be able to recognize it as "a sea of red with a less red dot". 
+
+For example, a column of 10 neurons will remember the top 10 most observed input pixel values.
 
 #### Step 2
 
