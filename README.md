@@ -9,7 +9,7 @@ Divination Machine (DM) is a Machine Intelligence architecture based on intellig
 
 For now DM can **observe** any time-series input sensory and/or motor data, **learn** patterns and sequences of patterns, and **predict** future patterns and sequences of patterns.  The ultimate goal of DM is to make motor **decisions** based on predictions learned from sensory input.  The DM architecture is still in its infancy and has lots of room for improvements and optimizations like the ones listed in this paper, but the underlying theory is simple and powerful.
 
-## Philosophy
+## Philosophy and Theort
 
 "The beginning of wisdom is the definition of terms" -Socrates.  
 
@@ -53,7 +53,7 @@ However, the neocortex does not operate with colors, sounds, or tastes.  Fundame
 
 In the above graphic, pink and cyan circles as well as "wait" and "eat!" actions have been encoded into neuron activations.
 
-## DM Functions
+## Functionality
 
 Divination Machine has 4 core functions:
 1. Spatial Encoding
@@ -97,7 +97,7 @@ Once DM has a set of neuron activations, "Column Winners", the algorithm searche
 
 ### Learning
 
-## Code Improvements
+## Future Improvements
 - Improve pattern and sequence recognition by chunking setPatternSums and setSequenceSums
 - Change OpenCL images to buffers for much larger space allocation
 - Fix learnInputMemories by having each neuron learn to recognize different field values
