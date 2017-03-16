@@ -54,10 +54,10 @@ In the above graphic, pink and cyan circles as well as "wait" and "eat!" actions
 ## DM Functions
 
 Divination Machine has 4 core functions:
-1. Spatial Encoding
-2. Temporal Encoding
-3. Decoding
-4. Learning.
+1. Spatial Encoding: spatial observation and pattern recognition
+2. Temporal Encoding: temporal observation and sequence recognition(prediction)
+3. Decoding: communication of predictions
+4. Learning:
 
 ### Spatial Encoding
 
