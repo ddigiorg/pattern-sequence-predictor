@@ -65,7 +65,7 @@ Spatial Encoding uses neuron activations to group together similar patterns from
 
 At each time step Spatial Encoding:
 1. Converts the input into a Sparse Distributed Representation (SDR) of neuron activations called "Column Winners"
-2. Searches "Pattern Memories" for "Column Winners" and if it exists returns the memory index, or "Spatial Encoding"
+2. Searches "Pattern Memories" for "Column Winners" and if it exists returns the memory index, or "Pattern"
 
 #### Columns of Neurons
 
@@ -83,7 +83,7 @@ The Euclidian distance compares two sets of values and computes how similar they
 
 #### Step 2
 
-Once DM has a set of neuron activations, "Column Winners", the algorithm searches its "Pattern Memory" to see if "Column Winners" exists.  If it doesn't exist DM adds the SDR to its Pattern Memory(see learning).  If "Column Winners" exists in "Pattern Memories" then the index where it exists is called the "Spatial Encoding", a single integer value representing the observed input.
+Once DM has a set of neuron activations, "Column Winners", the algorithm searches its "Pattern Memory" to see if "Column Winners" exists.  If it doesn't exist DM adds the SDR to its Pattern Memory(see learning).  If "Column Winners" exists in "Pattern Memories" then the index where it exists is called the "Pattern", a single integer value representing the observed input.
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/spatial_encoding_figure_2.png)
 
