@@ -9,7 +9,7 @@ Divination Machine (DM) is a Machine Intelligence architecture based on intellig
 
 For now DM can **observe** any time-series input sensory and/or motor data, **learn** patterns and sequences of patterns, and **predict** future patterns and sequences of patterns.  The ultimate goal of DM is to make motor **decisions** based on predictions learned from sensory input.  The DM architecture is still in its infancy and has lots of room for improvements and optimizations like the ones listed in this paper, but the underlying theory is simple and powerful.
 
-## Philosophy and Theort
+## Philosophy and Theory
 
 "The beginning of wisdom is the definition of terms" -Socrates.  
 
