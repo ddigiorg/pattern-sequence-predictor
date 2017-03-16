@@ -54,14 +54,14 @@ In the above graphic, pink and cyan circles as well as "wait" and "eat!" actions
 ## DM Functions
 
 Divination Machine has 4 core functions:
-1. **Spatial Encoding**: spatial observation and pattern recognition
-2. **Temporal Encoding**: temporal observation and sequence recognition(prediction)
-3. **Decoding**: communication of predictions
-4. **Learning**:
+1. Spatial Encoding
+2. Temporal Encoding
+3. Decoding
+4. Learning
 
 ### Spatial Encoding
 
-Spatial Encoding uses neuron activations to group together similar patterns from the near infinite possibilites of an input space.  For example, say you are looking at a 3x3 area of red pixels, but 1 pixel slightly less red.  The human brain is unable to distinguish the slightly off-color pixel from the others.  Now if the off-color pixel were to keep losing intensity, eventually the human brain would be able to see a dark-red pixel standing apart from the other red pixels.  The human brain therefore has a certain level of pattern recognition sensitivity because it is limited by the number of neurons it has to recognize patterns.  
+Spatial Encoding observes input at a single time step and attempts to recognize a learned pattern.  The algorithm uses neuron activations to group together similar patterns from the near infinite possibilites of an input space.  For example, say you are looking at a 3x3 area of red pixels, but 1 pixel slightly less red.  The human brain is unable to distinguish the slightly off-color pixel from the others.  Now if the off-color pixel were to keep losing intensity, eventually the human brain would be able to see a dark-red pixel standing apart from the other red pixels.  The human brain therefore has a certain level of pattern recognition sensitivity because it is limited by the number of neurons it has to recognize patterns.  
 
 At each time step Spatial Encoding:
 1. Converts the input into a Sparse Distributed Representation (SDR) of neuron activations called "Column Winners"
@@ -88,6 +88,8 @@ Once DM has a set of neuron activations, "Column Winners", the algorithm searche
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/spatial_encoding_figure_2.png)
 
 ### Temporal Encoding (Prediction)
+
+ Temporal Encoding observes patterns from Spatial Encoding through time and attempts to recognize a learned sequence.
 
 ### Decoding
 
