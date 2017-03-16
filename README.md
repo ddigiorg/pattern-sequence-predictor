@@ -83,7 +83,7 @@ The Euclidian distance compares two sets of values and computes how similar they
 
 #### Step 2
 
-DM then searches its "Pattern Memory" to see if "Column Winners" SDR exists.  If it doesn't exist DM adds the SDR to its Pattern Memory.  If it exists then the index where it exists is called the "Spatial Encoding", a single integer value representing the spatial context observed input.
+Once DM has a set of neuron activations, "Column Winners", the algorithm searches its "Pattern Memory" to see if "Column Winners" exists.  If it doesn't exist DM adds the SDR to its Pattern Memory(see learning).  If "Column Winners" exists in "Pattern Memories" then the index where it exists is called the "Spatial Encoding", a single integer value representing the observed input.
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/spatial_encoding_figure_2.png)
 
