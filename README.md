@@ -1,4 +1,4 @@
-AAAAAAAAAAAAAA
+![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/logo.png)
 
 # Divination Machine
 
@@ -47,11 +47,11 @@ All known intelligences thus far have limited perspective: how much an intellige
 
 Knowledge, or experience, is simply sequences of patterns.  Intelligence aquires knowledge by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory, through a process called "learning".  If the intelligence observes a portion of a sequence, it can predict the upcomming patterns in the sequence will occour.  Therefore, intelligence uses what it has learned to make predictions about the future and can influence the environment so that desired events may occour.
 
-AAAAAAAAAAA
+![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/knowledge_figure_1.png)
 
 However, the neocortex does not operate with colors, sounds, or tastes.  Fundamentally, a pattern in the neocortex is a set of neurons that activate in responce to an input at a certain time, or a spatial input.  For example, let's say you see a blue circle.  A set of neurons in your neocortex will activate in response to the visual stimulus of seeing the blue circle.  If the circle were suddenly to become red, another set of neurons would respond.  A sequence in the neocortex is therefore a sequential progression of neuron activations.  By converting, or encoding, observed patterns into neuron activations, the neocortex has a unified standard for storing and operating on knowledge.
 
-AAAAAAAAAAAAAAA
+![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/knowledge_figure_2.png)
 
 In the above graphic, pink and cyan circles as well as "wait" and "eat!" actions have been encoded into neuron activations.
 
@@ -65,7 +65,7 @@ Divination Machine has 4 core functions performed in order:
 
 The figure below shows an example of a single step through DM.  Although its operation is quite involved, we will step through and explain each function in its logical order.
 
-AAAAAAAAAAAAAAAA
+![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/map.png)
 
 ### Spatial Encoding
 
