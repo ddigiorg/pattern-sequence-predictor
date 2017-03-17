@@ -55,11 +55,13 @@ In the above graphic, pink and cyan circles as well as "wait" and "eat!" actions
 
 ## Functionality
 
-Divination Machine has 4 core functions:
+Divination Machine has 4 core functions performed in order:
 1. Spatial Encoding
 2. Temporal Encoding
-3. Decoding
+3. Spatial Decoding
 4. Learning
+
+The figure below shows an example of a single step through DM.  Although its operation is quite involved, we will step through and explain each function in its logical order.
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/map.png)
 
