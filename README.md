@@ -97,6 +97,10 @@ Once DM has a set of neuron activations, "Column Winners", the algorithm searche
 
 ### Learning
 
+## Code
+
+C++, OpenCL
+
 ## Future Improvements
 - Improve pattern and sequence recognition by chunking setPatternSums and setSequenceSums
 - Change OpenCL images to buffers for much larger space allocation
