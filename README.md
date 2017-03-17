@@ -1,4 +1,3 @@
-![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/logo.png)
 
 # Divination Machine
 
