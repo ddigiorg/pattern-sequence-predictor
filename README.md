@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/logo.png" alt="DM Logo" width=100/> DM
+<img src="https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/logo.png" alt="DM Logo" width=100/>
 
 # Divination Machine
 
