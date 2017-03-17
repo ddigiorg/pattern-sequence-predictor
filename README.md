@@ -67,19 +67,19 @@ The figure below shows an example of a single step through DM.  Although its ope
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/map.png)
 
-### Spatial Encoding
+### 1. Spatial Encoding
 
 Spatial Encoding observes input at a single time step and attempts to recognize a learned pattern.  The algorithm uses neuron activations to group together similar patterns from the near infinite possibilites of an input space.  For example, say you are looking at a 3x3 area of red pixels, but 1 pixel slightly less red.  The human brain is unable to distinguish the slightly off-color pixel from the others.  Now if the off-color pixel were to keep losing intensity, eventually the human brain would be able to see a dark-red pixel standing apart from the other red pixels.  The human brain therefore has a certain level of pattern recognition sensitivity because it is limited by the number of neurons it has to recognize patterns.  
-
-At each time step Spatial Encoding:
-1. Converts the input into a Sparse Distributed Representation (SDR) of neuron activations called "Column Winners"
-2. Searches "Pattern Memories" for "Column Winners" and if it exists returns the memory index, or "Pattern"
 
 #### Columns of Neurons
 
 A column, commonly refered to as a cortical "minicolumn" in neuroscience, is a group of neurons that share a receptive field, or a specific region, of the input space.  A single neuron in a column will activate in response to a range of similar receptive field input values.  Therefore, the more neurons in a column the more spatial sensitivity a column has to observe distinct patterns in an input.  
 
 Say you are observing a 3x3 grid of monochromatic pixels on a computer screen.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Let's define each pixel in computer memory as a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 3x3 grid has 9 pixels in total which has 1,001^9, or ~1.01x10^27 unique possible color inputs at a single moment in time.  This is more than twice the estimated amount of neurons in the human brain (about 100 billion neurons)!  Of course the brain can not afford that many neurons to represent just a 3x3 pixel space when the human retina has millions of photoreceptors.  This is why spatial encoding is important!
+
+At each time step Spatial Encoding:
+1. Converts the input into a Sparse Distributed Representation (SDR) of neuron activations called "Column Winners"
+2. Searches "Pattern Memories" for "Column Winners" and if it exists returns the memory index, or "Pattern"
 
 #### Step 1
 
@@ -91,13 +91,13 @@ The Euclidian distance compares two sets of values and computes how similar they
 
 Once DM has a set of neuron activations, "Column Winners", the algorithm searches its "Pattern Memory" to see if "Column Winners" exists.  If it doesn't exist DM adds the SDR to its Pattern Memory(see learning).  If "Column Winners" exists in "Pattern Memories" then the index where it exists is called the "Pattern", a single integer value representing the observed input.
 
-### Temporal Encoding (Prediction)
+### 2. Temporal Encoding (Prediction)
 
  Temporal Encoding observes patterns from Spatial Encoding through time and attempts to recognize a learned sequence.
 
-### Decoding
+### 3. Decoding
 
-### Learning
+### 4. Learning
 
 ## Code
 
