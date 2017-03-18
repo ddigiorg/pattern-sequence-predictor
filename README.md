@@ -2,14 +2,14 @@
 
 # Divination Machine
 
-Divination Machine (DM) is a Machine Intelligence architecture based on intelligence principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  Although its name implies the invocation of the supernatural, DM's functionality is obviously mundane.  Divination Machine:
+Divination Machine (DM) is a Machine Intelligence architecture based on intelligence principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  Although DM's name implies the invocation of the supernatural, its functionality is obviously earthly.  Divination Machine:
 
 - Observes spatial-temporal sensory-motor input
 - At each moment in time, encodes inputs into sparsly distributed neuron activations
-- Learns spatial and temporal encodings and stores them in memory
+- Learns neuron activation patterns and sequences of patterns
 - Predicts a possible future output based on memories
 
-For now DM can **observe** any time-series input sensory and/or motor data, **learn** patterns and sequences of patterns, and **predict** future patterns and sequences of patterns.  The ultimate goal of DM is to make motor **decisions** based on predictions learned from sensory input.  The DM architecture is still in its infancy and has lots of room for improvements and optimizations like the ones listed in this paper, but the underlying theory is simple and powerful.
+The DM architecture is still in its infancy and has lots of room for improvements and optimizations like the ones listed in this paper, but the underlying theory is simple and powerful.  Please see the readme in the "demos" directory for examples of DM in action.
 
 ## Philosophy and Theory
 
@@ -21,11 +21,11 @@ Intelligence, existing in an ordered environment, acquires knowledge in an attem
 
 ### Ordered Environment
 
-The ultimate model of reality for an intelligence is the environment it percieves.  We call it "Universe", all of time and space and its contents.  Thus far our Universe is governed by natural laws, human conceptions of gravity, nuclear forces, electromagnetism, etc., which provide order, reoccouring concepts which are therefore predictable.  For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  Earth does not randomly careen away from the Sun or explode into a soup of ever-changing infinite impossibilities (like the unpredictability of static on a TV).  Therefore we can predict Earth will exist as-is and revolve around the Sun as long as the natural order, understood or not, remains stable.  
+The ultimate model of reality for an intelligence is the environment it percieves.  We call our environment "Universe", all of time and space and its contents.  Our Universe is governed by natural laws, human conceptions of gravity, nuclear forces, electromagnetism, etc., which provide order, reoccouring concepts which are therefore predictable.  For example, Earth revolves around the Sun in an ellipse taking 365 days for a single orbit.  Earth does not randomly careen away from the Sun or explode into a soup of ever-changing infinite impossibilities (like the unpredictability of static on a TV).  Therefore we can predict Earth will exist as-is and revolve around the Sun as long as the natural order, understood or not, remains stable.  
 
 ### Perspective
 
-Although many of these principles of order can not be directly observed, they are known to exist through their effects.  In essence by observing the environment an intelligence gains an intuition for the underlying order of the environment.  Because we live in a space-time Universe, to seek an understanding of intelligence we must have a concept of an intelligence's spatial-temporal perception of its environment.
+Although many of the principles of the natural order can not be directly observed, they are known to exist through their effects.  Essentially, by observing the environment an intelligence gains an intuition for the underlying order of the environment.  Because we live in a space-time Universe, to seek an understanding of intelligence we must have a concept of an intelligence's spatial-temporal perception of its environment.
 
 #### Space
 
@@ -41,11 +41,11 @@ A temporal phenomenon or "sequence" is a 1-dimensional 1-directional progression
 - Autitory: Hearing the changing pitch in a song
 - Proprioception: Feeling the speed at which a joint moves
 
-All known intelligences thus far have limited perspective: how much an intelligence observes and how much it can remember.  Humans can not see and store all matter at all angles at all time and even if we could, the visible spectrum is just a small range of possible frequencies.  Thus, the ultimate promise of Machine Intelligence is being able to develop intelligences with greater or different perspectives.
+All known intelligences thus far has perspective: limits to how much an intelligence observes and how much it can remember.  Humans can not see and learn about all matter at all angles at all time and even if we could, the visible spectrum is just a small range of possible frequencies.  Thus, the ultimate promise of Machine Intelligence is being able to develop intelligences with greater or different perspectives that can observe in non-human sensory domains.
 
 ### Knowledge
 
-Knowledge, or experience, is simply sequences of patterns.  Intelligence aquires knowledge by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory, through a process called "learning".  If the intelligence observes a portion of a sequence, it can predict the upcomming patterns in the sequence will occour.  Therefore, intelligence uses what it has learned to make predictions about the future and can influence the environment so that desired events may occour.
+Knowledge, or experience, is simply sequences of patterns.  Intelligence aquires knowledge by observing its environment through sensors (eyes, ears, noses, tounges, nerves, etc.) and influencing its environment through motors (muscles, vocal cords, etc).  Knowledge is stored in memory, through a process called "learning".  If the intelligence observes a portion of a sequence, it can predict upcomming patterns in the learned sequence will occour.  Therefore, intelligence uses what it has learned to make predictions about the future and can influence the environment so that desired events may occour.
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/knowledge_figure_1.png)
 
@@ -53,21 +53,19 @@ Knowledge, or experience, is simply sequences of patterns.  Intelligence aquires
 
 A column, commonly refered to as a cortical "minicolumn" in neuroscience, is a group of neurons that share a receptive field, or a specific region, of the input space.  A single neuron in a column will activate in response to a range of similar receptive field input values.  Therefore, the more neurons in a column the more spatial sensitivity a column has to observe distinct patterns in an input.  
 
-Say you are observing a 3x3 grid of monochromatic pixels on a computer screen.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Let's define each pixel in computer memory as a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 3x3 grid has 9 pixels in total which has 1,001^9, or ~1.01x10^27 unique possible color inputs at a single moment in time.  This is more than twice the estimated amount of neurons in the human brain (about 100 billion neurons)!  Of course the brain can not afford that many neurons to represent just a 3x3 pixel space when the human retina has millions of photoreceptors.  This is !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-For example, say you are looking at a 3x3 area of red pixels, but 1 pixel slightly less red.  The human brain is unable to distinguish the slightly off-color pixel from the others.  Now if the off-color pixel were to keep losing intensity, eventually the human brain would be able to see a dark-red pixel standing apart from the other red pixels.  The human brain therefore has a certain level of pattern recognition sensitivity because it is limited by the number of neurons it has to recognize patterns.  
-
-[GRAPHIC?]
-
-However, the neocortex does not operate with colors, sounds, or tastes.  Fundamentally, a pattern in the neocortex is a set of neurons that activate in responce to an input at a certain time, or a spatial input.  For example, let's say you see a blue circle.  A set of neurons in your neocortex will activate in response to the visual stimulus of seeing the blue circle.  If the circle were suddenly to become red, another set of neurons would respond.  A sequence in the neocortex is therefore a sequential progression of neuron activations.  By converting, or encoding, observed patterns into neuron activations, the neocortex has a unified standard for storing and operating on knowledge.
+However, the neocortex does not operate with colors, sounds, or tastes.  Fundamentally, a pattern in the neocortex is a set of neurons that activate in responce to an input at a certain time.  For example, let's say you see a blue circle.  A set of neurons in your neocortex will activate in response to the visual stimulus of seeing the blue circle.  If the circle were suddenly to become red, another set of neurons would respond.  A sequence in the neocortex is therefore a sequential progression of neuron activations.  By converting, or encoding, observed patterns into neuron activations, the neocortex has a unified standard for storing and operating on knowledge.
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/knowledge_figure_2.png)
 
 In the above graphic, pink and cyan circles as well as "wait" and "eat!" actions have been encoded into neuron activations.
 
+Say you are observing a 3x3 grid of monochromatic pixels on a computer screen.  For reference, a monochromatic color uses a single channel (i.e. red) of the 4 channel color representation (red, green, blue, and alpha).  Let's define each pixel in computer memory as a floating point value between 0.0f and 1.0f representing color intensity.  If we define our color sensitivity to be 0.001f there are 1,001 different color values, or intensities, represented in each pixel.  A 3x3 grid has 9 pixels in total which has 1,001^9, or ~1.01x10^27 unique possible color inputs at a single moment in time.  This is more than twice the estimated amount of neurons in the human brain (about 100 billion neurons)!  Of course the brain can not afford that many neurons to represent just a 3x3 pixel space when the human retina has millions of photoreceptors.
+
+Therefore, neurons in the cortex activate inputs that are contextually similar.  For example, say you are looking at a 3x3 area of red pixels, but 1 pixel slightly less red.  The human brain is unable to distinguish the slightly off-color pixel from the others.  Now if the off-color pixel were to keep losing intensity, eventually the human brain would be able to see a dark-red pixel standing apart from the other red pixels.  The human brain therefore has a certain level of pattern recognition sensitivity because it is limited by the number of neurons it has to recognize patterns.  This is the essence of the Spatial Encoding function in DM.
+
 ## Code Functionality
 
-DM is coded in C++ using OpenCL parallel processing framework.  Working operating systems include Linux and Windows.  The only dependancy needed to run DM is an OpenCL installation.
+DM is coded in C++ using the OpenCL parallel processing framework.  Working operating systems include Linux and Windows.  The only dependancy needed to run DM is an OpenCL installation.
 
 Divination Machine has 4 core functions:
 - Spatial Encoding
@@ -75,13 +73,13 @@ Divination Machine has 4 core functions:
 - Spatial Decoding
 - Learning
 
-The figure below shows an example of a single step through DM.  Although its operation is quite involved, we will step through each function in its logical order and explain its functionality.
+The figure below shows an example of a single time-step through DM.  Although its operation is quite involved, this paper explains each function in the order they occour.
 
-![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/map.png)
+[!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]
 
 ### Spatial Encoding
 
-Spatial Encoding observes input at a single time step and attempts to recognize a learned pattern.  The algorithm uses neuron activations to group together similar patterns from the near infinite possibilites of an input space.  
+Spatial Encoding observes input at a single time-step and attempts to recognize a learned pattern.  The algorithm uses neuron activations to group together similar patterns from the near infinite possibilites of an input space.  
 
 #### 1. setNeuronSums
 
@@ -165,6 +163,7 @@ If Short Term Memory values at index 1 and above are not in Sequence Memories, a
 
 ## To-Do list
 - Finish README
+- Add readme to demos directory
 - Implement a "forecast" function to show running future predictions
 - Improve pattern and sequence recognition by chunking setPatternSums and setSequenceSums
 - Show a very simple moving square demo
