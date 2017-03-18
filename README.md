@@ -75,7 +75,7 @@ Divination Machine has 4 core functions:
 
 The figure below shows an example of a single time-step through DM.  Although its operation is quite involved, this paper explains each function in the order they occour.
 
-[!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]
+![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/map.png)
 
 ### Spatial Encoding
 
