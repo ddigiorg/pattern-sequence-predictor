@@ -153,10 +153,14 @@ If Column Winners values are not in Pattern Memories, add those values to Patter
 
 If Short Term Memory values at index 1 and above are not in Sequence Memories, add those values to Sequence Memories.  Additionally, the Short Term Memory value at index 0 is added Predict Memories at the same row location of the new sequence in Sequence Memories.
 
-## Possible Future Improvements
-- Convert OpenCL images to buffers for much larger memory
-- Fix learnInputMemories by having each neuron learn to recognize different field values
-
+## Future Improvements & Additions
+- Provide a sensory-motor demo (note: may need to add some sort of reinforcement learning to give DM "instinctual behavior")
+- Convert OpenCL images to buffers for much larger memory space allocation
+- Fix learnNeurons:  each neuron needs to more effectively learn to recognize different field values
+  - Research Self Organizing Map learning to see if it learns to differentiate patterns from input
+  - Or possibly figure out how to initialize each neuron memories to equadistant input receptive field values depending on how many neurons are in a column
+- Consider adding "permanance" values to Pattern Memories and Sequence Memories
+- Figure out how to allocate cl::size_t<3> values in one line for cleaner code
 
 
 ## To-Do list
