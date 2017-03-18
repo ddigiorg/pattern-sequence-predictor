@@ -11,6 +11,10 @@ Divination Machine (DM) is a Machine Intelligence architecture based on intellig
 
 For now DM can **observe** any time-series input sensory and/or motor data, **learn** patterns and sequences of patterns, and **predict** future patterns and sequences of patterns.  The ultimate goal of DM is to make motor **decisions** based on predictions learned from sensory input.  The DM architecture is still in its infancy and has lots of room for improvements and optimizations like the ones listed in this paper, but the underlying theory is simple and powerful.
 
+## Code
+
+DM is coded in C++ using OpenCL parallel processing framework.  Working operating systems include Linux and Windows.  The only dependancy needed to run DM is an OpenCL installation.
+
 ## Philosophy and Theory
 
 "The beginning of wisdom is the definition of terms" -Socrates.  
@@ -142,10 +146,6 @@ Retrieve the Predict Pattern value from Predict Memories by indexing off the val
 #### 11. learnPattern
 
 #### 12. learnSequence
-
-## Code
-
-C++, OpenCL
 
 ## Future Improvements
 - Improve pattern and sequence recognition by chunking setPatternSums and setSequenceSums
