@@ -49,7 +49,7 @@ Knowledge, or experience, is simply sequences of patterns.  Intelligence aquires
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/knowledge_figure_1.png)
 
-#### Columns of Neurons
+### The Cortex: Columns of Neurons
 
 A column, commonly refered to as a cortical "minicolumn" in neuroscience, is a group of neurons that share a receptive field, or a specific region, of the input space.  A single neuron in a column will activate in response to a range of similar receptive field input values.  Therefore, the more neurons in a column the more spatial sensitivity a column has to observe distinct patterns in an input.  
 
@@ -83,31 +83,53 @@ Spatial Encoding observes input at a single time step and attempts to recognize 
 
 #### 1. setNeuronSums
 
- every neuron in a column comparing it's memories to the column's receptive field input values around the column's field center location.  The best matching neuron is the winner neuron of the column.  Programatically, each column essentially behaves like a Self Organizing Map where each neuron has a "sum" value calculated by taking the Euclidian distance of every node's memory and corresponding input value.
+Programatically, each column essentially behaves like a Self Organizing Map.  For every neuron, compute the Euclidian distance formula between its memories and its column's receptive field input values.  The Euclidian distance formula compares two sets of values and computes how similar they are to each other.  A small distance means the values are similar while large distance means the values are not similar.  Therefore, the output of this fuction is an array of floats indicating how well the neuron memories match with the input data.
 
-The Euclidian distance compares two sets of values and computes how similar they are to each other.  A shorter distance means the values are more similar while a larger distance means the values are less similar.  For each column, the node with the smallest distance is the winner node, the node who's memories are the most similar to the column's receptive field input values.
+The Euclidian Distance Formula:
+for every memory m: sum += (input[m] - memory[m])<sup>2</sup>
 
-#### 2. getMinValue
+For example:
 
-Each column selects a neuron with the smallest sum, or Euclidian distance.  This is the winner neuron for that column.  Thus the Spatial Encoder converts the input into a Sparse Distributed Representation (SDR) of neuron activations called "Column Winners".
+sum =  
+(0.1 - 0.1)<sup>2</sup> + (0.1 - 0.2)<sup>2</sup> + (0.1 - 0.3)<sup>2</sup> + (0.1 - 0.1)<sup>2</sup> + (0.1 - 0.2)<sup>2</sup> + (0.9 - 0.8)<sup>2</sup> + (0.1 - 0.1)<sup>2</sup> + (0.9 - 0.7)<sup>2</sup> + (0.9 - 0.9)<sup>2</sup>
+
+sum = 0.11
+
+#### 2. getMinIndices
+
+For each column, the neuron with the smallest distance is the column's winner neuron, representing the input context of the column's receptive field input.  Thus the Spatial Encoder converts the entire input into a Sparse Distributed Representation (SDR) of neuron activations called Column Winners.  The minumum index of each column are highlighted in Neuron Sums.
 
 #### 3. setPatternSums
 
-Once DM has a set of neuron activations, "Column Winners", the algorithm searches its "Pattern Memory" to see if "Column Winners" exists.  If it doesn't exist DM adds the SDR to its Pattern Memory(see learning).  If "Column Winners" exists in "Pattern Memories" then the index where it exists is called the "Pattern", a single integer value representing the observed input.
+Each row in Pattern Memories contains previously learned column winner SDRs.  The algorithm compares the values of Column Winners with each row in Pattern Memories.  For every equivalent value(representing the neuron index of a column), the respective sum is incremented by 1.
 
 #### 4. getMatchingIndex
 
+For every Pattern Sum index if the value is equal to the number of columns, then set Pattern to the Pattern Sum index.
+
 ### Temporal Encoding (Prediction)
 
- Temporal Encoding observes patterns from Spatial Encoding through time and attempts to recognize a learned sequence.
+Temporal Encoding observes sequences of patterns from Spatial Encoding and attempts to recognize a learned sequence.  If it recognizes a sequence, the algorithm outputs a prediction of the next time step's pattern.  By feeding this predicted pattern back through another  iteration of Temporal Encoding, the algorithm outputs a prediction of a pattern two time-steps ahead of the current time-step.  By continuing to feedback predicted patterns, DM can predict as many time-steps into the future as desired.
 
 #### 5. setSTM
 
+STM stands for Short Term Memory, which holds a sequence of patterns observed over time from Spatial Encoding.  The indices of STM represent historical time steps, ie. index 0 is t = 0, index 1 is t = -1, index 2 is t = -2 and so on.  First, the algorithm shifts pattern values in STM back through time, ie. the pattern in index 0 moves to index 1, the pattern in index 1 moves to index 2, and so on.  Then the new pattern is copied into index 0.  For example:
+
+[INSERT GRAPHIC HERE]
+
+What new pattern gets copied depends on what iteration of Temporal Encoding the algorithm is on.  For the first iteration the observed pattern from Spatial Encoding is placed into index 0 of STM.  If there are subsequent iterations of Temporal Memory, the current values of STM are copied into a temporary buffer.  As Temporal Encoding iterates, STM shifts and predicted patterns are placed into index 0 of STM.  When the last iteration of Temporal Memory is finished, the values of the temporary STM are copied back into STM.  This allows DM to keep observed and predicted sequences seperate.
+
 #### 6. setSequenceSums
+
+Each row in Sequence Memories contains previously learned Short Term Memories(index 1 and above).  The algorithm compares the values of STM(index 1 and above) with each row in Sequence Memories.  For every equivalent value, the respective sum is incremented by 1.
 
 #### 7. getMatchingIndex
 
+For every Sequence Sum index if the value is equal to the number of patterns in Short Term Memory minus 1, then set Sequence to the Sequence Sum index.
+
 #### 8. getPredictPattern
+
+Retrieve the Predict Pattern value from Predict Memories by indexing off the value of Sequence.
 
 ### Decoding
 
