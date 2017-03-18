@@ -125,7 +125,7 @@ What new pattern gets copied depends on what iteration of Temporal Encoding the 
 
 #### 6. setSequenceSums
 
-Each row in Sequence Memories contains previously learned Short Term Memories(index 1 and above).  The algorithm compares the values of STM(index 1 and above) with each row in Sequence Memories.  For every equivalent value, the respective sum is incremented by 1.
+Each row in Sequence Memories contains previously learned Short Term Memories.  The algorithm compares the values of STM(index 0 to maxIndex - 1) with each row in Sequence Memories.  For every equivalent value, the respective sum is incremented by 1.
 
 #### 7. getMatchingIndex
 
@@ -137,7 +137,11 @@ Retrieve the Predict Pattern value from Predict Memories by indexing off the val
 
 ### Decoding
 
+Decoding uses memories to convert neuron patterns into output data.  Decoding can be thought of as DM "communicating" possible future patterns.
+
 #### 9. getOutputs
+
+Once Temporal Memory has completed its predicting and have a value in Predict Pattern, the algorithm grabs the appropriate column winner SDR from Pattern Memories.  Using this set of column winners, the algorithm looks up each winner neuron's memories and applies the memories to the output receptive field of each column.
 
 ### Learning
 
@@ -145,17 +149,20 @@ Retrieve the Predict Pattern value from Predict Memories by indexing off the val
 
 #### 11. learnPattern
 
+If Column Winners values are not in Pattern Memories, add those values to Pattern Memories.
+
 #### 12. learnSequence
 
-## Future Improvements
-- Improve pattern and sequence recognition by chunking setPatternSums and setSequenceSums
-- Change OpenCL images to buffers for much larger space allocation
+If Short Term Memory values at index 1 and above are not in Sequence Memories, add those values to Sequence Memories.  Additionally, the Short Term Memory value at index 0 is added Predict Memories at the same row location of the new sequence in Sequence Memories.
+
+## Possible Future Improvements
+- Convert OpenCL images to buffers for much larger memory
 - Fix learnInputMemories by having each neuron learn to recognize different field values
-- Once learnInputMemories fixed, make 2d ball physics demo
 
 
 
 ## To-Do list
 - Finish README
 - Implement a "forecast" function to show running future predictions
+- Improve pattern and sequence recognition by chunking setPatternSums and setSequenceSums
 - Show a very simple moving square demo
