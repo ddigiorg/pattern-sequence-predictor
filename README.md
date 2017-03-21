@@ -2,7 +2,7 @@
 
 # Divination Machine
 
-Divination Machine (DM) is a Machine Intelligence architecture based on intelligence principles of the mammalian neocortex and is inspired by research from Numenta's Hierarchical Temporal Memory (HTM) and Ogma's Feynman Machine (FM).  Although DM's name implies the invocation of the supernatural, its functionality is obviously earthly.  Divination Machine:
+Divination Machine (DM) is a Machine Intelligence architecture based on intelligence principles of the mammalian neocortex and is inspired by research from [Numenta's](http://numenta.com/) [Hierarchical Temporal Memory (HTM)](https://github.com/numenta/nupic) and [Ogma's](https://ogma.ai/) [Feynman Machine (FM)](https://github.com/ogmacorp/OgmaNeo) .  Although DM's name implies the invocation of the supernatural, its functionality is obviously earthly.  Divination Machine:
 
 - Observes spatial-temporal sensory-motor input
 - At each moment in time, encodes inputs into sparsly distributed neuron activations
@@ -131,7 +131,7 @@ For every Sequence Sum index if the value is equal to the number of patterns in 
 
 Retrieve the Predict Pattern value from Predict Memories by indexing off the value of Sequence.
 
-### Decoding
+### Spatial Decoding
 
 Decoding uses memories to convert neuron patterns into output data.  Decoding can be thought of as DM "communicating" possible future patterns.
 
