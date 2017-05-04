@@ -6,13 +6,13 @@ When given a stimulus, i.e. patterns of light seen by the eye or a specific soun
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/webpages/technology/pattern-sequence-predictor/figure-1.png)
 
-The architecture has 4 core functions demonstrated in the figure above and explained below in this paper:
+As an example, a single time step (t = 0) may look like this figure.  Previous time steps (t = -1, t = -2) have already encoded and recognized previously learned neuron patterns from memory.  Additionally, the algorithm has learned sequences and by recognizing a learned sequence can predict the next time step's pattern.  The above figure demonstrates PSP's 4 core functions:
 - **Spatial Encoding**: Encodes spatial-temporal sensory-motor input into a sparsly distributed neuron activation pattern
 - **Temporal Encoding** (Prediction): Predicts the most likely future pattern
 - **Spatial Decoding**: Decodes future pattern into visible spatial-temporal sensory-motor outputs
 - **Learning**: Learns new neuron activation patterns and sequences of patterns
 
-The figure below shows an example of a single time step through PSP algorithm.
+The figure below shows a code flow diagram of the PSP algorithm.
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/webpages/technology/pattern-sequence-predictor/map.png)
 
