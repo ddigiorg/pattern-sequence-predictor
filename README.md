@@ -12,7 +12,7 @@ As an example, a single time step (t = 0) may look like this figure.  Previous t
 - **Spatial Decoding**: Decodes future pattern into visible spatial-temporal sensory-motor outputs
 - **Learning**: Learns new neuron activation patterns and sequences of patterns
 
-The figure below shows a code flow diagram of the PSP algorithm.
+The figure below shows a code flow diagram of the PSP algorithm.  The flow of operations start on the bottom left and travels in a clockwise direction.  Each function is explained in order.
 
 ![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/webpages/technology/pattern-sequence-predictor/map.png)
 
