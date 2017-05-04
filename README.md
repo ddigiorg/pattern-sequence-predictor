@@ -30,7 +30,7 @@ Each column tries calculate the best matching neuron by calculating the Euclidia
 
 The Euclidian Distance Formula:
 ```
-for every memory m: sum += (input[m] - memory[m])<sup>2</sup>
+for every memory m: sum += (input[m] - memory[m])^2
 ```
 
 Therefore, the output of this fuction is a 2D array of floats called "Neuron Sums" representing how well each column's neuron memories match with the input data of the column's respective receptive field.
