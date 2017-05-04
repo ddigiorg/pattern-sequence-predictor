@@ -1,23 +1,20 @@
 # Pattern & Sequence Predictor
 
-Pattern and Sequence Predictor (PSP) is an unsupervised Machine Intelligence architecture based on intelligence principles of the neocortex and predictive nature of animal brains.  When given a stimulus, i.e. patterns of light seen by the eye or a specific sound or many other examples, a sparse set of neurons in the neocortex are "active", meaning the neurons output spikes of action potentials.  Any form of stimuli imaginable may be converted into neuron activations given the proper sensor and the neocortex operates on patterns and sequences of neuron activations.  By observing sequences of patterns over time, the neocortex is able to learn and recognize reoccouring sequence trajectories and predict immediate future patterns and sequences.  The PSP algorithm:
+Pattern and Sequence Predictor (PSP) is an unsupervised Machine Intelligence architecture based on intelligence principles of the neocortex and predictive nature of animal brains.  PSP is coded in C++ using the OpenCL parallel processing framework.  Working operating systems include Linux and Windows.  The only dependancy needed to run PSP is an OpenCL installation.
 
-- Encodes spatial-temporal sensory-motor input into a sparsly distributed neuron activation pattern
-- Predicts the most likely future pattern
-- Decodes future pattern into visible spatial-temporal sensory-motor outputs
-- Learns new neuron activation patterns and sequences of patterns
+When given a stimulus, i.e. patterns of light seen by the eye or a specific sound or many other examples, a sparse set of neurons in the neocortex are "active", meaning the neurons output spikes of action potentials.  Any form of stimuli imaginable may be converted into neuron activations given the proper sensor and the neocortex operates on patterns and sequences of neuron activations.  By observing sequences of patterns over time, the neocortex is able to learn and recognize reoccouring sequence trajectories and predict immediate future patterns and sequences.  
 
-[PIC]
+![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/webpages/technology/pattern-sequence-predictor/figure-1.png)
 
-PSP is coded in C++ using the OpenCL parallel processing framework.  Working operating systems include Linux and Windows.  The only dependancy needed to run PSP is an OpenCL installation.  The architecture has 4 core functions explained in this paper:
-- Spatial Encoding
-- Temporal Encoding
-- Spatial Decoding
-- Learning
+The architecture has 4 core functions demonstrated in the figure above and explained below in this paper:
+- Spatial Encoding: Encodes spatial-temporal sensory-motor input into a sparsly distributed neuron activation pattern
+- Temporal Encoding (Prediction): Predicts the most likely future pattern
+- Spatial Decoding: Decodes future pattern into visible spatial-temporal sensory-motor outputs
+- Learning: Learns new neuron activation patterns and sequences of patterns
 
-The figure below shows an example of a single time step through PSP.  Although its operation is quite involved, this paper explains each function in the order they occour.
+![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/webpages/technology/pattern-sequence-predictor/map.png)
 
-![alt tag](https://raw.githubusercontent.com/ddigiorg/neuroowl.github.io/master/images/technology/divination_machine/map.png)
+The figure above shows an example of a single time step through PSP.
 
 ## 1. Spatial Encoding
 
