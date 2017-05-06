@@ -1,6 +1,6 @@
 # Pattern & Sequence Predictor
 
-Pattern and Sequence Predictor (PSP) is an unsupervised Machine Intelligence architecture based on intelligence principles of the neocortex and predictive nature of animal brains.  PSP is coded in C++ using the OpenCL parallel processing framework.  Working operating systems include Linux and Windows.  The only dependancy needed to run PSP is an OpenCL installation.
+Pattern and Sequence Predictor (PSP) is an unsupervised Machine Intelligence architecture based on intelligence principles of the neocortex, the predictive nature of animal brains, and the theories of [Numenta's](http://numenta.com/) [Hierarchical Temporal Memory](https://github.com/numenta/nupic.core).  The architecture is coded in C++ using the OpenCL parallel processing framework.  Working operating systems include Linux and Windows.  The only dependancy needed to run PSP is an OpenCL installation.
 
 When given a stimulus, like patterns of light seen by the eye, a sparse set of neurons in the neocortex are "active", meaning only a few neurons of a relatively large population output spikes of action potentials.  Any stimuli, be it light, sound, touch, etc., may be converted into neuron activations.  Therefore, the "language" of the neocortex is patterns and sequences of sparse neuron activations.  By observing sequences of patterns over time, the neocortex is able to learn and recognize reoccouring sequence trajectories and predict immediate future patterns and sequences.  The figure below gives a visual example of this in action.
 
